@@ -69,6 +69,16 @@ module user_state_FSM_tb ();
 	// simulated inputs
 	initial begin
 		// TODO:
+    rst <= 1; crash <= 0; power_up_gained <= 0; @(posedge clk);
+    rst <= 0; @(posedge clk); // reset 
+    @(posedge clk); // self-loop
+    power_up_gained <= 1; @(posedge clk); // go to immune
+    power_up_gained <= 0; @(posedge clk); // stay in immune
+    crash <= 1; @(posedge clk); // go to back to alive
+    crash <= 0; @(posedge clk); 
+    crash <= 1; @(posedge clk); // dead
+    crash <= 1; @(posedge clk);
+    crash <= 0; @(posedge clk); // stay dead
 		$stop();
 	end  // inputs initial
 	
