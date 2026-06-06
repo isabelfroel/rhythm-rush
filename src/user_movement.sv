@@ -12,10 +12,10 @@
  */
 module user_movement #(
     parameter int Y_GROUND    = 300,
-    parameter int Y_TOP    = 300,
+    parameter int Y_TOP    = 100,
     parameter int GRAVITY     = 1,
     parameter int JUMP_VY     = -12,
-    parameter int SPRITE_SIZE = 10
+    parameter int SPRITE_SIZE = 20
 ) (
     input  logic clk,
     input  logic rst,
@@ -67,10 +67,10 @@ endmodule // user_movement
  * checks that the ball moves up and down correctly.
  * checks that a user can't double click to double bounce
  */
-`timescale 1ns/1ps
+// `timescale 1ns/1ps
 module user_movement_tb;
     logic clk, rst, enable, up;
-    logic [9:0] y_coord;
+    logic [8:0] y_coord;
 
     user_movement dut (.*);
 
@@ -80,16 +80,15 @@ module user_movement_tb;
     initial begin
         rst <= 1; enable <= 0; up <= 0; @(posedge clk); 
         rst <= 0; @(posedge clk);
-        up <= 1; @(posedge clk);
-        up <= 0; @(posedge clk);
+        up <= 1; @(posedge clk); // start moving up immediately 
+        up <= 0; @(posedge clk); // but doesn't continue moving until enable is high 
         @(posedge clk);
-        @(posedge clk); // test that up doesn't work when not enabled
-        enable <= 1; up <= 1; @(posedge clk); // test up
+        enable <= 1; @(posedge clk); // should start moving
         up <= 0; @(posedge clk);
-        repeat (40) @(posedge clk); // let it hit the top and fall down
+        repeat (30) @(posedge clk); // let it hit the top and fall down
         up <= 1; @(posedge clk);
-        up = 0; @(posedge clk); // jump again
-        repeat (20) @(posedge clk);
+        up <= 0; @(posedge clk); // jump again
+        repeat (10) @(posedge clk);
         up <= 1; @(posedge clk); // interupt with up and see what happens
         repeat (20) @(posedge clk); 
         $stop;

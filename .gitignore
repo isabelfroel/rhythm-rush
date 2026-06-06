@@ -1,0 +1,9 @@
+# Ignore build output
+src/db
+src/greybox_tmp
+src/incremental_db
+src/work
+*.wlf
+*.do
+*.qip
+*.cnx

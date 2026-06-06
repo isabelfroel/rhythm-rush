@@ -46,3 +46,33 @@ module screen_controller (rst, clk, screen_select, start, dead);
     endcase
   
 endmodule  // screen_controller
+
+`timescale 1 ps / 1 ps
+module screen_controller_tb ();
+
+	logic [1:0] screen_select;
+   logic rst, clk, start, dead;
+	
+	// instantiate module
+	screen_controller dut (.*);
+	
+	// create simulated clock
+	parameter T = 20;
+	initial begin
+		clk <= 0;
+		forever #(T/2) clk <= ~clk;
+	end  // clock initial
+	
+	// simulated inputs
+	initial begin
+    rst <= 1; start <= 0; dead <= 0; @(posedge clk);
+    rst <= 0; @(posedge clk); // reset 
+    @(posedge clk); // self-loop
+    start <= 1; @(posedge clk); // go to immune
+    start <= 0; @(posedge clk); // stay in immune
+    dead <= 1; @(posedge clk); // go to back to alive
+    dead <= 0; @(posedge clk); 
+		$stop();
+	end  // inputs initial
+	
+endmodule  // screen_controller_tb

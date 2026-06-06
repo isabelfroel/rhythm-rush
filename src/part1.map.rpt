@@ -1,0 +1,1666 @@
+Analysis & Synthesis report for part1
+Fri Jun 05 18:05:49 2026
+Quartus Prime Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. Analysis & Synthesis RAM Summary
+  9. Analysis & Synthesis DSP Block Usage Summary
+ 10. State Machine - |DE1_SoC|screen_controller:dsm|ps
+ 11. State Machine - |DE1_SoC|game_screen_manager:gdm|user_state_controller:comb_420|ps
+ 12. Registers Removed During Synthesis
+ 13. General Register Statistics
+ 14. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 15. Source assignments for end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component|altsyncram_2ii1:auto_generated
+ 16. Source assignments for start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component|altsyncram_ppi1:auto_generated
+ 17. Parameter Settings for User Entity Instance: Top-level Entity: |DE1_SoC
+ 18. Parameter Settings for User Entity Instance: video_driver:v1
+ 19. Parameter Settings for User Entity Instance: video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst|altera_pll:altera_pll_i
+ 20. Parameter Settings for User Entity Instance: video_driver:v1|altera_up_avalon_video_vga_timing:video
+ 21. Parameter Settings for User Entity Instance: user_input:oui|sync:s
+ 22. Parameter Settings for User Entity Instance: user_input:ouii|sync:s
+ 23. Parameter Settings for User Entity Instance: game_screen_manager:gdm
+ 24. Parameter Settings for User Entity Instance: game_screen_manager:gdm|user_movement:umm
+ 25. Parameter Settings for User Entity Instance: game_screen_manager:gdm|object_manager:arrr
+ 26. Parameter Settings for User Entity Instance: game_screen_manager:gdm|collision:col
+ 27. Parameter Settings for User Entity Instance: end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component
+ 28. Parameter Settings for User Entity Instance: start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component
+ 29. Parameter Settings for Inferred Entity Instance: game_screen_manager:gdm|collision:col|lpm_divide:Div1
+ 30. Parameter Settings for Inferred Entity Instance: game_screen_manager:gdm|collision:col|lpm_divide:Div0
+ 31. Parameter Settings for Inferred Entity Instance: game_screen_manager:gdm|lpm_divide:Div0
+ 32. altsyncram Parameter Settings by Entity Instance
+ 33. Port Connectivity Checks: "seg7:s5"
+ 34. Port Connectivity Checks: "game_screen_manager:gdm|spawn_lfsr:sp"
+ 35. Port Connectivity Checks: "game_screen_manager:gdm|object_manager:arrr"
+ 36. Port Connectivity Checks: "game_screen_manager:gdm|height_lfsr:uhf"
+ 37. Port Connectivity Checks: "video_driver:v1|altera_up_avalon_video_vga_timing:video"
+ 38. Port Connectivity Checks: "video_driver:v1|CLOCK25_PLL:c25_gen"
+ 39. Port Connectivity Checks: "video_driver:v1"
+ 40. Post-Synthesis Netlist Statistics for Top Partition
+ 41. Elapsed Time Per Partition
+ 42. Analysis & Synthesis Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2017  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel MegaCore Function License Agreement, or other 
+applicable license agreement, including, without limitation, 
+that your use is for the sole purpose of programming logic 
+devices manufactured by Intel and sold by Intel or its 
+authorized distributors.  Please refer to the applicable 
+agreement for further details.
+
+
+
++-------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                  ;
++---------------------------------+---------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Fri Jun 05 18:05:49 2026       ;
+; Quartus Prime Version           ; 17.0.0 Build 595 04/25/2017 SJ Lite Edition ;
+; Revision Name                   ; part1                                       ;
+; Top-level Entity Name           ; DE1_SoC                                     ;
+; Family                          ; Cyclone V                                   ;
+; Logic utilization (in ALMs)     ; N/A                                         ;
+; Total registers                 ; 1007                                        ;
+; Total pins                      ; 96                                          ;
+; Total virtual pins              ; 0                                           ;
+; Total block memory bits         ; 614,400                                     ;
+; Total DSP Blocks                ; 1                                           ;
+; Total HSSI RX PCSs              ; 0                                           ;
+; Total HSSI PMA RX Deserializers ; 0                                           ;
+; Total HSSI TX PCSs              ; 0                                           ;
+; Total HSSI PMA TX Serializers   ; 0                                           ;
+; Total PLLs                      ; 1                                           ;
+; Total DLLs                      ; 0                                           ;
++---------------------------------+---------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CGXFC7C7F23C8     ;                    ;
+; Top-level entity name                                                           ; DE1_SoC            ; part1              ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation      ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; OpenCore Plus hardware evaluation                                               ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; PowerPlay Power Optimization During Synthesis                                   ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 8           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
++----------------------------+-------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
++-------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
+; File Name with User-Entered Path    ; Used in Netlist ; File Type                              ; File Name with Absolute Path                                                 ; Library ;
++-------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
+; altera_up_avalon_video_vga_timing.v ; yes             ; User Verilog HDL File                  ; Z:/371/rhythm_rush/altera_up_avalon_video_vga_timing.v                       ;         ;
+; CLOCK25_PLL.v                       ; yes             ; User Wizard-Generated File             ; Z:/371/rhythm_rush/CLOCK25_PLL.v                                             ;         ;
+; CLOCK25_PLL_0002.v                  ; yes             ; User Verilog HDL File                  ; Z:/371/rhythm_rush/CLOCK25_PLL_0002.v                                        ;         ;
+; collision.sv                        ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/collision.sv                                              ;         ;
+; counter.sv                          ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/counter.sv                                                ;         ;
+; DE1_SoC.sv                          ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/DE1_SoC.sv                                                ;         ;
+; end_ROM.v                           ; yes             ; User Wizard-Generated File             ; Z:/371/rhythm_rush/end_ROM.v                                                 ;         ;
+; end_screen_manager.sv               ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/end_screen_manager.sv                                     ;         ;
+; game_screen_manager.sv              ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/game_screen_manager.sv                                    ;         ;
+; height_lfsr.sv                      ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/height_lfsr.sv                                            ;         ;
+; object_manager.sv                   ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/object_manager.sv                                         ;         ;
+; obstacle_enable.sv                  ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/obstacle_enable.sv                                        ;         ;
+; pulse.sv                            ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/pulse.sv                                                  ;         ;
+; screen_controller.sv                ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/screen_controller.sv                                      ;         ;
+; seg7.sv                             ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/seg7.sv                                                   ;         ;
+; slower_enable.sv                    ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/slower_enable.sv                                          ;         ;
+; spawn_lfsr.sv                       ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/spawn_lfsr.sv                                             ;         ;
+; start_ROM.v                         ; yes             ; User Wizard-Generated File             ; Z:/371/rhythm_rush/start_ROM.v                                               ;         ;
+; start_screen_manager.sv             ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/start_screen_manager.sv                                   ;         ;
+; sync.sv                             ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/sync.sv                                                   ;         ;
+; user_movement.sv                    ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/user_movement.sv                                          ;         ;
+; userInput.sv                        ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/userInput.sv                                              ;         ;
+; video_driver.sv                     ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/video_driver.sv                                           ;         ;
+; user_state_controller.sv            ; yes             ; User SystemVerilog HDL File            ; Z:/371/rhythm_rush/user_state_controller.sv                                  ;         ;
+; altera_pll.v                        ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altera_pll.v          ;         ;
+; altsyncram.tdf                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf        ;         ;
+; stratix_ram_block.inc               ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/stratix_ram_block.inc ;         ;
+; lpm_mux.inc                         ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_mux.inc           ;         ;
+; lpm_decode.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_decode.inc        ;         ;
+; aglobal170.inc                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/aglobal170.inc        ;         ;
+; a_rdenreg.inc                       ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/a_rdenreg.inc         ;         ;
+; altrom.inc                          ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altrom.inc            ;         ;
+; altram.inc                          ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altram.inc            ;         ;
+; altdpram.inc                        ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altdpram.inc          ;         ;
+; db/altsyncram_2ii1.tdf              ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/altsyncram_2ii1.tdf                                    ;         ;
+; end_screen.mif                      ; yes             ; Auto-Found Memory Initialization File  ; Z:/371/rhythm_rush/end_screen.mif                                            ;         ;
+; db/altsyncram_ppi1.tdf              ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/altsyncram_ppi1.tdf                                    ;         ;
+; start_screen.mif                    ; yes             ; Auto-Found Memory Initialization File  ; Z:/371/rhythm_rush/start_screen.mif                                          ;         ;
+; lpm_divide.tdf                      ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/lpm_divide.tdf        ;         ;
+; abs_divider.inc                     ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/abs_divider.inc       ;         ;
+; sign_div_unsign.inc                 ; yes             ; Megafunction                           ; c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/sign_div_unsign.inc   ;         ;
+; db/lpm_divide_5am.tdf               ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/lpm_divide_5am.tdf                                     ;         ;
+; db/sign_div_unsign_bkh.tdf          ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/sign_div_unsign_bkh.tdf                                ;         ;
+; db/alt_u_div_sse.tdf                ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/alt_u_div_sse.tdf                                      ;         ;
+; db/lpm_divide_4am.tdf               ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/lpm_divide_4am.tdf                                     ;         ;
+; db/sign_div_unsign_akh.tdf          ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/sign_div_unsign_akh.tdf                                ;         ;
+; db/alt_u_div_qse.tdf                ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/alt_u_div_qse.tdf                                      ;         ;
+; db/lpm_divide_fbm.tdf               ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/lpm_divide_fbm.tdf                                     ;         ;
+; db/sign_div_unsign_llh.tdf          ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/sign_div_unsign_llh.tdf                                ;         ;
+; db/alt_u_div_gve.tdf                ; yes             ; Auto-Generated Megafunction            ; Z:/371/rhythm_rush/db/alt_u_div_gve.tdf                                      ;         ;
++-------------------------------------+-----------------+----------------------------------------+------------------------------------------------------------------------------+---------+
+
+
++--------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                  ;
++---------------------------------------------+----------------+
+; Resource                                    ; Usage          ;
++---------------------------------------------+----------------+
+; Estimate of Logic utilization (ALMs needed) ; 2058           ;
+;                                             ;                ;
+; Combinational ALUT usage for logic          ; 2354           ;
+;     -- 7 input functions                    ; 1              ;
+;     -- 6 input functions                    ; 1671           ;
+;     -- 5 input functions                    ; 137            ;
+;     -- 4 input functions                    ; 73             ;
+;     -- <=3 input functions                  ; 472            ;
+;                                             ;                ;
+; Dedicated logic registers                   ; 1007           ;
+;                                             ;                ;
+; I/O pins                                    ; 96             ;
+; Total MLAB memory bits                      ; 0              ;
+; Total block memory bits                     ; 614400         ;
+;                                             ;                ;
+; Total DSP Blocks                            ; 1              ;
+;                                             ;                ;
+; Total PLLs                                  ; 1              ;
+;     -- PLLs                                 ; 1              ;
+;                                             ;                ;
+; Maximum fan-out node                        ; CLOCK_50~input ;
+; Maximum fan-out                             ; 2170           ;
+; Total fan-out                               ; 28816          ;
+; Average fan-out                             ; 5.96           ;
++---------------------------------------------+----------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                                                                                          ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
+; Compilation Hierarchy Node                      ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                                                            ; Entity Name                       ; Library Name ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
+; |DE1_SoC                                        ; 2354 (2)            ; 1007 (0)                  ; 614400            ; 1          ; 96   ; 0            ; |DE1_SoC                                                                                                                                       ; DE1_SoC                           ; work         ;
+;    |end_screen_manager:esm|                     ; 213 (213)           ; 1 (1)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|end_screen_manager:esm                                                                                                                ; end_screen_manager                ; work         ;
+;       |end_ROM:esr|                             ; 0 (0)               ; 0 (0)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|end_screen_manager:esm|end_ROM:esr                                                                                                    ; end_ROM                           ; work         ;
+;          |altsyncram:altsyncram_component|      ; 0 (0)               ; 0 (0)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component                                                                    ; altsyncram                        ; work         ;
+;             |altsyncram_2ii1:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component|altsyncram_2ii1:auto_generated                                     ; altsyncram_2ii1                   ; work         ;
+;    |game_screen_manager:gdm|                    ; 1785 (359)          ; 878 (5)                   ; 0                 ; 1          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm                                                                                                               ; game_screen_manager               ; work         ;
+;       |collision:col|                           ; 987 (927)           ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col                                                                                                 ; collision                         ; work         ;
+;          |lpm_divide:Div0|                      ; 24 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div0                                                                                 ; lpm_divide                        ; work         ;
+;             |lpm_divide_4am:auto_generated|     ; 24 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div0|lpm_divide_4am:auto_generated                                                   ; lpm_divide_4am                    ; work         ;
+;                |sign_div_unsign_akh:divider|    ; 24 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div0|lpm_divide_4am:auto_generated|sign_div_unsign_akh:divider                       ; sign_div_unsign_akh               ; work         ;
+;                   |alt_u_div_qse:divider|       ; 24 (24)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div0|lpm_divide_4am:auto_generated|sign_div_unsign_akh:divider|alt_u_div_qse:divider ; alt_u_div_qse                     ; work         ;
+;          |lpm_divide:Div1|                      ; 36 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div1                                                                                 ; lpm_divide                        ; work         ;
+;             |lpm_divide_5am:auto_generated|     ; 36 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div1|lpm_divide_5am:auto_generated                                                   ; lpm_divide_5am                    ; work         ;
+;                |sign_div_unsign_bkh:divider|    ; 36 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div1|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider                       ; sign_div_unsign_bkh               ; work         ;
+;                   |alt_u_div_sse:divider|       ; 36 (36)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|collision:col|lpm_divide:Div1|lpm_divide_5am:auto_generated|sign_div_unsign_bkh:divider|alt_u_div_sse:divider ; alt_u_div_sse                     ; work         ;
+;       |counter:csjsd|                           ; 6 (6)               ; 5 (5)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|counter:csjsd                                                                                                 ; counter                           ; work         ;
+;       |height_lfsr:uhf|                         ; 1 (1)               ; 6 (6)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|height_lfsr:uhf                                                                                               ; height_lfsr                       ; work         ;
+;       |lpm_divide:Div0|                         ; 82 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|lpm_divide:Div0                                                                                               ; lpm_divide                        ; work         ;
+;          |lpm_divide_fbm:auto_generated|        ; 82 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|lpm_divide:Div0|lpm_divide_fbm:auto_generated                                                                 ; lpm_divide_fbm                    ; work         ;
+;             |sign_div_unsign_llh:divider|       ; 82 (0)              ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|lpm_divide:Div0|lpm_divide_fbm:auto_generated|sign_div_unsign_llh:divider                                     ; sign_div_unsign_llh               ; work         ;
+;                |alt_u_div_gve:divider|          ; 82 (82)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|lpm_divide:Div0|lpm_divide_fbm:auto_generated|sign_div_unsign_llh:divider|alt_u_div_gve:divider               ; alt_u_div_gve                     ; work         ;
+;       |object_manager:arrr|                     ; 226 (226)           ; 784 (784)                 ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr                                                                                           ; object_manager                    ; work         ;
+;       |obstacle_enable:qhhh|                    ; 20 (20)             ; 20 (20)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|obstacle_enable:qhhh                                                                                          ; obstacle_enable                   ; work         ;
+;       |pulse:p2|                                ; 1 (1)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|pulse:p2                                                                                                      ; pulse                             ; work         ;
+;       |pulse:p|                                 ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|pulse:p                                                                                                       ; pulse                             ; work         ;
+;       |slower_enable:erm|                       ; 26 (26)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|slower_enable:erm                                                                                             ; slower_enable                     ; work         ;
+;       |spawn_lfsr:sp|                           ; 17 (17)             ; 11 (11)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|spawn_lfsr:sp                                                                                                 ; spawn_lfsr                        ; work         ;
+;       |user_movement:umm|                       ; 55 (55)             ; 21 (21)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|user_movement:umm                                                                                             ; user_movement                     ; work         ;
+;       |user_state_controller:comb_420|          ; 5 (5)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|game_screen_manager:gdm|user_state_controller:comb_420                                                                                ; user_state_controller             ; work         ;
+;    |screen_controller:dsm|                      ; 3 (3)               ; 3 (3)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|screen_controller:dsm                                                                                                                 ; screen_controller                 ; work         ;
+;    |seg7:s4|                                    ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|seg7:s4                                                                                                                               ; seg7                              ; work         ;
+;    |start_screen_manager:ssm|                   ; 223 (223)           ; 1 (1)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|start_screen_manager:ssm                                                                                                              ; start_screen_manager              ; work         ;
+;       |start_ROM:str|                           ; 0 (0)               ; 0 (0)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|start_screen_manager:ssm|start_ROM:str                                                                                                ; start_ROM                         ; work         ;
+;          |altsyncram:altsyncram_component|      ; 0 (0)               ; 0 (0)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component                                                                ; altsyncram                        ; work         ;
+;             |altsyncram_ppi1:auto_generated|    ; 0 (0)               ; 0 (0)                     ; 307200            ; 0          ; 0    ; 0            ; |DE1_SoC|start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component|altsyncram_ppi1:auto_generated                                 ; altsyncram_ppi1                   ; work         ;
+;    |user_input:ouii|                            ; 0 (0)               ; 3 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|user_input:ouii                                                                                                                       ; user_input                        ; work         ;
+;       |pulse:p|                                 ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|user_input:ouii|pulse:p                                                                                                               ; pulse                             ; work         ;
+;       |sync:s|                                  ; 0 (0)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|user_input:ouii|sync:s                                                                                                                ; sync                              ; work         ;
+;    |user_input:oui|                             ; 0 (0)               ; 3 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|user_input:oui                                                                                                                        ; user_input                        ; work         ;
+;       |pulse:p|                                 ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|user_input:oui|pulse:p                                                                                                                ; pulse                             ; work         ;
+;       |sync:s|                                  ; 0 (0)               ; 2 (2)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|user_input:oui|sync:s                                                                                                                 ; sync                              ; work         ;
+;    |video_driver:v1|                            ; 121 (76)            ; 118 (63)                  ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|video_driver:v1                                                                                                                       ; video_driver                      ; work         ;
+;       |CLOCK25_PLL:c25_gen|                     ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|video_driver:v1|CLOCK25_PLL:c25_gen                                                                                                   ; CLOCK25_PLL                       ; work         ;
+;          |CLOCK25_PLL_0002:clock25_pll_inst|    ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst                                                                 ; CLOCK25_PLL_0002                  ; work         ;
+;             |altera_pll:altera_pll_i|           ; 0 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst|altera_pll:altera_pll_i                                         ; altera_pll                        ; work         ;
+;       |altera_up_avalon_video_vga_timing:video| ; 45 (45)             ; 55 (55)                   ; 0                 ; 0          ; 0    ; 0            ; |DE1_SoC|video_driver:v1|altera_up_avalon_video_vga_timing:video                                                                               ; altera_up_avalon_video_vga_timing ; work         ;
++-------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+------------------------------------------------------------------------------------------------------------------------------------------------+-----------------------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis RAM Summary                                                                                                                                                                                             ;
++------------------------------------------------------------------------------------------------------------------+------------+------+--------------+--------------+--------------+--------------+--------+------------------+
+; Name                                                                                                             ; Type       ; Mode ; Port A Depth ; Port A Width ; Port B Depth ; Port B Width ; Size   ; MIF              ;
++------------------------------------------------------------------------------------------------------------------+------------+------+--------------+--------------+--------------+--------------+--------+------------------+
+; end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component|altsyncram_2ii1:auto_generated|ALTSYNCRAM     ; M10K block ; ROM  ; 480          ; 640          ; --           ; --           ; 307200 ; end_screen.mif   ;
+; start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component|altsyncram_ppi1:auto_generated|ALTSYNCRAM ; M10K block ; ROM  ; 480          ; 640          ; --           ; --           ; 307200 ; start_screen.mif ;
++------------------------------------------------------------------------------------------------------------------+------------+------+--------------+--------------+--------------+--------------+--------+------------------+
+
+
++----------------------------------------------+
+; Analysis & Synthesis DSP Block Usage Summary ;
++-------------------------------+--------------+
+; Statistic                     ; Number Used  ;
++-------------------------------+--------------+
+; Sum of two 18x18              ; 1            ;
+; Total number of DSP blocks    ; 1            ;
+;                               ;              ;
+; Fixed Point Signed Multiplier ; 2            ;
++-------------------------------+--------------+
+
+
+Encoding Type:  One-Hot
++---------------------------------------------------+
+; State Machine - |DE1_SoC|screen_controller:dsm|ps ;
++------------+------------+----------+--------------+
+; Name       ; ps.S_Start ; ps.S_End ; ps.S_Game    ;
++------------+------------+----------+--------------+
+; ps.S_Start ; 0          ; 0        ; 0            ;
+; ps.S_Game  ; 1          ; 0        ; 1            ;
+; ps.S_End   ; 1          ; 1        ; 0            ;
++------------+------------+----------+--------------+
+
+
+Encoding Type:  One-Hot
++------------------------------------------------------------------------------------+
+; State Machine - |DE1_SoC|game_screen_manager:gdm|user_state_controller:comb_420|ps ;
++-------------+------------+-----------+---------------------------------------------+
+; Name        ; ps.S_Alive ; ps.S_Dead ; ps.S_Immune                                 ;
++-------------+------------+-----------+---------------------------------------------+
+; ps.S_Alive  ; 0          ; 0         ; 0                                           ;
+; ps.S_Immune ; 1          ; 0         ; 1                                           ;
+; ps.S_Dead   ; 1          ; 1         ; 0                                           ;
++-------------+------------+-----------+---------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                            ;
++---------------------------------------------------+-------------------------------------------+
+; Register name                                     ; Reason for Removal                        ;
++---------------------------------------------------+-------------------------------------------+
+; start_screen_manager:ssm|r[0..3,5..7]             ; Merged with start_screen_manager:ssm|r[4] ;
+; start_screen_manager:ssm|g[0..7]                  ; Merged with start_screen_manager:ssm|r[4] ;
+; start_screen_manager:ssm|b[0..7]                  ; Merged with start_screen_manager:ssm|r[4] ;
+; end_screen_manager:esm|r[0..3,5..7]               ; Merged with end_screen_manager:esm|r[4]   ;
+; end_screen_manager:esm|g[0..7]                    ; Merged with end_screen_manager:esm|r[4]   ;
+; end_screen_manager:esm|b[0..7]                    ; Merged with end_screen_manager:esm|r[4]   ;
+; video_driver:v1|rout[1,4,5]                       ; Merged with video_driver:v1|rout[0]       ;
+; video_driver:v1|rout[3,6,7]                       ; Merged with video_driver:v1|rout[2]       ;
+; video_driver:v1|gout[1..7]                        ; Merged with video_driver:v1|gout[0]       ;
+; video_driver:v1|bout[1,4,5]                       ; Merged with video_driver:v1|bout[0]       ;
+; video_driver:v1|bout[3,6,7]                       ; Merged with video_driver:v1|bout[2]       ;
+; game_screen_manager:gdm|r[1,4,5]                  ; Merged with game_screen_manager:gdm|r[0]  ;
+; game_screen_manager:gdm|r[3,6,7]                  ; Merged with game_screen_manager:gdm|r[2]  ;
+; game_screen_manager:gdm|g[1..7]                   ; Merged with game_screen_manager:gdm|g[0]  ;
+; game_screen_manager:gdm|b[1,4,5]                  ; Merged with game_screen_manager:gdm|b[0]  ;
+; game_screen_manager:gdm|b[3,6,7]                  ; Merged with game_screen_manager:gdm|b[2]  ;
+; game_screen_manager:gdm|user_movement:umm|y_q[10] ; Stuck at GND due to stuck port data_in    ;
+; screen_controller:dsm|ps~4                        ; Lost fanout                               ;
+; screen_controller:dsm|ps~5                        ; Lost fanout                               ;
+; Total Number of Removed Registers = 87            ;                                           ;
++---------------------------------------------------+-------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 1007  ;
+; Number of registers using Synchronous Clear  ; 924   ;
+; Number of registers using Synchronous Load   ; 9     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 849   ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                                      ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                            ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|counter:csjsd|cnt[0]                 ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[63][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[62][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[61][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[60][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[59][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[58][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[57][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[56][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[55][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[54][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[53][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[52][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[51][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[50][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[49][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[48][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[47][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[46][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[45][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[44][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[43][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[42][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[41][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[40][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[39][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[38][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[37][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[36][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[35][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[34][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[33][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[32][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[31][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[30][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[29][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[28][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[27][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[26][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[25][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[24][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[23][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[22][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[21][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[20][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[19][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[18][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[17][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[16][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[15][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[14][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[13][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[12][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[11][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[10][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[9][5]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[8][5]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[7][1]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[6][5]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[5][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[4][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[3][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[2][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[1][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|obstacles[0][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[63][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[62][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[61][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[60][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[59][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[58][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[57][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[56][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[55][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[54][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[53][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[52][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[51][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[50][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[49][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[48][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[47][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[46][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[45][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[44][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[43][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[42][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[41][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[40][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[39][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[38][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[37][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[36][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[35][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[34][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[33][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[32][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[31][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[30][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[29][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[28][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[27][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[26][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[25][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[24][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[23][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[22][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[21][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[20][4] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[19][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[18][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[17][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[16][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[15][5] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[14][0] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[13][1] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[12][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[11][2] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[10][3] ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[9][1]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[8][2]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[7][5]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[6][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[5][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[4][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[3][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[2][4]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[1][1]  ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|power_ups[0][1]  ;
+; 3:1                ; 9 bits    ; 18 LEs        ; 9 LEs                ; 9 LEs                  ; Yes        ; |DE1_SoC|video_driver:v1|yt[4]                                        ;
+; 5:1                ; 5 bits    ; 15 LEs        ; 15 LEs               ; 0 LEs                  ; Yes        ; |DE1_SoC|video_driver:v1|bout[2]                                      ;
+; 4:1                ; 4 bits    ; 8 LEs         ; 8 LEs                ; 0 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|shift_count[2]   ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|left_ptr[4]      ;
+; 4:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|object_manager:arrr|right_ptr[2]     ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |DE1_SoC|video_driver:v1|x[0]                                         ;
+; 4:1                ; 10 bits   ; 20 LEs        ; 0 LEs                ; 20 LEs                 ; Yes        ; |DE1_SoC|video_driver:v1|xd[4]                                        ;
+; 5:1                ; 2 bits    ; 6 LEs         ; 4 LEs                ; 2 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|user_movement:umm|y_q[0]             ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 0 LEs                ; 27 LEs                 ; Yes        ; |DE1_SoC|video_driver:v1|y[2]                                         ;
+; 5:1                ; 9 bits    ; 27 LEs        ; 0 LEs                ; 27 LEs                 ; Yes        ; |DE1_SoC|video_driver:v1|yd[6]                                        ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 9 LEs                ; 3 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|user_movement:umm|y_q[8]             ;
+; 6:1                ; 5 bits    ; 20 LEs        ; 15 LEs               ; 5 LEs                  ; Yes        ; |DE1_SoC|game_screen_manager:gdm|user_movement:umm|y_q[6]             ;
+; 6:1                ; 11 bits   ; 44 LEs        ; 11 LEs               ; 33 LEs                 ; Yes        ; |DE1_SoC|game_screen_manager:gdm|user_movement:umm|vy_q[2]            ;
+; 640:1              ; 2 bits    ; 852 LEs       ; 852 LEs              ; 0 LEs                  ; Yes        ; |DE1_SoC|start_screen_manager:ssm|r[4]                                ;
+; 64:1               ; 12 bits   ; 504 LEs       ; 504 LEs              ; 0 LEs                  ; No         ; |DE1_SoC|game_screen_manager:gdm|collision:col|Mux1                   ;
+; 64:1               ; 12 bits   ; 504 LEs       ; 504 LEs              ; 0 LEs                  ; No         ; |DE1_SoC|game_screen_manager:gdm|collision:col|Mux8                   ;
+; 64:1               ; 12 bits   ; 504 LEs       ; 504 LEs              ; 0 LEs                  ; No         ; |DE1_SoC|game_screen_manager:gdm|collision:col|Mux31                  ;
+; 64:1               ; 12 bits   ; 504 LEs       ; 504 LEs              ; 0 LEs                  ; No         ; |DE1_SoC|game_screen_manager:gdm|Mux7                                 ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+-----------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component|altsyncram_2ii1:auto_generated ;
++---------------------------------+--------------------+------+------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                         ;
++---------------------------------+--------------------+------+------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                          ;
++---------------------------------+--------------------+------+------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------+
+; Source assignments for start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component|altsyncram_ppi1:auto_generated ;
++---------------------------------+--------------------+------+----------------------------------------------------------------+
+; Assignment                      ; Value              ; From ; To                                                             ;
++---------------------------------+--------------------+------+----------------------------------------------------------------+
+; OPTIMIZE_POWER_DURING_SYNTHESIS ; NORMAL_COMPILATION ; -    ; -                                                              ;
++---------------------------------+--------------------+------+----------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |DE1_SoC ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; Y_GROUND       ; 300   ; Signed Integer                                 ;
+; Y_TOP          ; 0     ; Signed Integer                                 ;
+; GRAVITY        ; 1     ; Signed Integer                                 ;
+; JUMP_VY        ; -20   ; Signed Integer                                 ;
+; SPRITE_SIZE    ; 20    ; Signed Integer                                 ;
+; X_LEFT         ; 100   ; Signed Integer                                 ;
+; SCREEN_W       ; 640   ; Signed Integer                                 ;
+; OBJ_H          ; 9     ; Signed Integer                                 ;
+; OBJ_WIDTH      ; 16    ; Signed Integer                                 ;
+; NUM_OBS        ; 10    ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: video_driver:v1 ;
++----------------+-------+-------------------------------------+
+; Parameter Name ; Value ; Type                                ;
++----------------+-------+-------------------------------------+
+; WIDTH          ; 640   ; Signed Integer                      ;
+; HEIGHT         ; 480   ; Signed Integer                      ;
++----------------+-------+-------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst|altera_pll:altera_pll_i ;
++--------------------------------------+------------------------+----------------------------------------------------------------------------+
+; Parameter Name                       ; Value                  ; Type                                                                       ;
++--------------------------------------+------------------------+----------------------------------------------------------------------------+
+; reference_clock_frequency            ; 50.0 MHz               ; String                                                                     ;
+; fractional_vco_multiplier            ; false                  ; String                                                                     ;
+; pll_type                             ; General                ; String                                                                     ;
+; pll_subtype                          ; General                ; String                                                                     ;
+; number_of_clocks                     ; 1                      ; Signed Integer                                                             ;
+; operation_mode                       ; direct                 ; String                                                                     ;
+; deserialization_factor               ; 4                      ; Signed Integer                                                             ;
+; data_rate                            ; 0                      ; Signed Integer                                                             ;
+; sim_additional_refclk_cycles_to_lock ; 0                      ; Signed Integer                                                             ;
+; output_clock_frequency0              ; 25.000000 MHz          ; String                                                                     ;
+; phase_shift0                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle0                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency1              ; 0 MHz                  ; String                                                                     ;
+; phase_shift1                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle1                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency2              ; 0 MHz                  ; String                                                                     ;
+; phase_shift2                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle2                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency3              ; 0 MHz                  ; String                                                                     ;
+; phase_shift3                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle3                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency4              ; 0 MHz                  ; String                                                                     ;
+; phase_shift4                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle4                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency5              ; 0 MHz                  ; String                                                                     ;
+; phase_shift5                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle5                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency6              ; 0 MHz                  ; String                                                                     ;
+; phase_shift6                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle6                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency7              ; 0 MHz                  ; String                                                                     ;
+; phase_shift7                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle7                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency8              ; 0 MHz                  ; String                                                                     ;
+; phase_shift8                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle8                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency9              ; 0 MHz                  ; String                                                                     ;
+; phase_shift9                         ; 0 ps                   ; String                                                                     ;
+; duty_cycle9                          ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency10             ; 0 MHz                  ; String                                                                     ;
+; phase_shift10                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle10                         ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency11             ; 0 MHz                  ; String                                                                     ;
+; phase_shift11                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle11                         ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency12             ; 0 MHz                  ; String                                                                     ;
+; phase_shift12                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle12                         ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency13             ; 0 MHz                  ; String                                                                     ;
+; phase_shift13                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle13                         ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency14             ; 0 MHz                  ; String                                                                     ;
+; phase_shift14                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle14                         ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency15             ; 0 MHz                  ; String                                                                     ;
+; phase_shift15                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle15                         ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency16             ; 0 MHz                  ; String                                                                     ;
+; phase_shift16                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle16                         ; 50                     ; Signed Integer                                                             ;
+; output_clock_frequency17             ; 0 MHz                  ; String                                                                     ;
+; phase_shift17                        ; 0 ps                   ; String                                                                     ;
+; duty_cycle17                         ; 50                     ; Signed Integer                                                             ;
+; clock_name_0                         ;                        ; String                                                                     ;
+; clock_name_1                         ;                        ; String                                                                     ;
+; clock_name_2                         ;                        ; String                                                                     ;
+; clock_name_3                         ;                        ; String                                                                     ;
+; clock_name_4                         ;                        ; String                                                                     ;
+; clock_name_5                         ;                        ; String                                                                     ;
+; clock_name_6                         ;                        ; String                                                                     ;
+; clock_name_7                         ;                        ; String                                                                     ;
+; clock_name_8                         ;                        ; String                                                                     ;
+; clock_name_global_0                  ; false                  ; String                                                                     ;
+; clock_name_global_1                  ; false                  ; String                                                                     ;
+; clock_name_global_2                  ; false                  ; String                                                                     ;
+; clock_name_global_3                  ; false                  ; String                                                                     ;
+; clock_name_global_4                  ; false                  ; String                                                                     ;
+; clock_name_global_5                  ; false                  ; String                                                                     ;
+; clock_name_global_6                  ; false                  ; String                                                                     ;
+; clock_name_global_7                  ; false                  ; String                                                                     ;
+; clock_name_global_8                  ; false                  ; String                                                                     ;
+; m_cnt_hi_div                         ; 1                      ; Signed Integer                                                             ;
+; m_cnt_lo_div                         ; 1                      ; Signed Integer                                                             ;
+; m_cnt_bypass_en                      ; false                  ; String                                                                     ;
+; m_cnt_odd_div_duty_en                ; false                  ; String                                                                     ;
+; n_cnt_hi_div                         ; 1                      ; Signed Integer                                                             ;
+; n_cnt_lo_div                         ; 1                      ; Signed Integer                                                             ;
+; n_cnt_bypass_en                      ; false                  ; String                                                                     ;
+; n_cnt_odd_div_duty_en                ; false                  ; String                                                                     ;
+; c_cnt_hi_div0                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div0                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en0                     ; false                  ; String                                                                     ;
+; c_cnt_in_src0                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en0               ; false                  ; String                                                                     ;
+; c_cnt_prst0                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst0                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div1                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div1                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en1                     ; false                  ; String                                                                     ;
+; c_cnt_in_src1                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en1               ; false                  ; String                                                                     ;
+; c_cnt_prst1                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst1                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div2                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div2                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en2                     ; false                  ; String                                                                     ;
+; c_cnt_in_src2                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en2               ; false                  ; String                                                                     ;
+; c_cnt_prst2                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst2                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div3                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div3                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en3                     ; false                  ; String                                                                     ;
+; c_cnt_in_src3                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en3               ; false                  ; String                                                                     ;
+; c_cnt_prst3                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst3                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div4                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div4                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en4                     ; false                  ; String                                                                     ;
+; c_cnt_in_src4                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en4               ; false                  ; String                                                                     ;
+; c_cnt_prst4                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst4                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div5                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div5                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en5                     ; false                  ; String                                                                     ;
+; c_cnt_in_src5                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en5               ; false                  ; String                                                                     ;
+; c_cnt_prst5                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst5                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div6                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div6                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en6                     ; false                  ; String                                                                     ;
+; c_cnt_in_src6                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en6               ; false                  ; String                                                                     ;
+; c_cnt_prst6                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst6                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div7                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div7                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en7                     ; false                  ; String                                                                     ;
+; c_cnt_in_src7                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en7               ; false                  ; String                                                                     ;
+; c_cnt_prst7                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst7                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div8                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div8                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en8                     ; false                  ; String                                                                     ;
+; c_cnt_in_src8                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en8               ; false                  ; String                                                                     ;
+; c_cnt_prst8                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst8                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div9                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div9                        ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en9                     ; false                  ; String                                                                     ;
+; c_cnt_in_src9                        ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en9               ; false                  ; String                                                                     ;
+; c_cnt_prst9                          ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst9                   ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div10                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div10                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en10                    ; false                  ; String                                                                     ;
+; c_cnt_in_src10                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en10              ; false                  ; String                                                                     ;
+; c_cnt_prst10                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst10                  ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div11                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div11                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en11                    ; false                  ; String                                                                     ;
+; c_cnt_in_src11                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en11              ; false                  ; String                                                                     ;
+; c_cnt_prst11                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst11                  ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div12                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div12                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en12                    ; false                  ; String                                                                     ;
+; c_cnt_in_src12                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en12              ; false                  ; String                                                                     ;
+; c_cnt_prst12                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst12                  ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div13                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div13                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en13                    ; false                  ; String                                                                     ;
+; c_cnt_in_src13                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en13              ; false                  ; String                                                                     ;
+; c_cnt_prst13                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst13                  ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div14                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div14                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en14                    ; false                  ; String                                                                     ;
+; c_cnt_in_src14                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en14              ; false                  ; String                                                                     ;
+; c_cnt_prst14                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst14                  ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div15                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div15                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en15                    ; false                  ; String                                                                     ;
+; c_cnt_in_src15                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en15              ; false                  ; String                                                                     ;
+; c_cnt_prst15                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst15                  ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div16                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div16                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en16                    ; false                  ; String                                                                     ;
+; c_cnt_in_src16                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en16              ; false                  ; String                                                                     ;
+; c_cnt_prst16                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst16                  ; 0                      ; Signed Integer                                                             ;
+; c_cnt_hi_div17                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_lo_div17                       ; 1                      ; Signed Integer                                                             ;
+; c_cnt_bypass_en17                    ; false                  ; String                                                                     ;
+; c_cnt_in_src17                       ; ph_mux_clk             ; String                                                                     ;
+; c_cnt_odd_div_duty_en17              ; false                  ; String                                                                     ;
+; c_cnt_prst17                         ; 1                      ; Signed Integer                                                             ;
+; c_cnt_ph_mux_prst17                  ; 0                      ; Signed Integer                                                             ;
+; pll_vco_div                          ; 1                      ; Signed Integer                                                             ;
+; pll_slf_rst                          ; false                  ; String                                                                     ;
+; pll_bw_sel                           ; low                    ; String                                                                     ;
+; pll_output_clk_frequency             ; 0 MHz                  ; String                                                                     ;
+; pll_cp_current                       ; 0                      ; Signed Integer                                                             ;
+; pll_bwctrl                           ; 0                      ; Signed Integer                                                             ;
+; pll_fractional_division              ; 1                      ; Signed Integer                                                             ;
+; pll_fractional_cout                  ; 24                     ; Signed Integer                                                             ;
+; pll_dsm_out_sel                      ; 1st_order              ; String                                                                     ;
+; mimic_fbclk_type                     ; gclk                   ; String                                                                     ;
+; pll_fbclk_mux_1                      ; glb                    ; String                                                                     ;
+; pll_fbclk_mux_2                      ; fb_1                   ; String                                                                     ;
+; pll_m_cnt_in_src                     ; ph_mux_clk             ; String                                                                     ;
+; pll_vcoph_div                        ; 1                      ; Signed Integer                                                             ;
+; refclk1_frequency                    ; 0 MHz                  ; String                                                                     ;
+; pll_clkin_0_src                      ; clk_0                  ; String                                                                     ;
+; pll_clkin_1_src                      ; clk_0                  ; String                                                                     ;
+; pll_clk_loss_sw_en                   ; false                  ; String                                                                     ;
+; pll_auto_clk_sw_en                   ; false                  ; String                                                                     ;
+; pll_manu_clk_sw_en                   ; false                  ; String                                                                     ;
+; pll_clk_sw_dly                       ; 0                      ; Signed Integer                                                             ;
+; pll_extclk_0_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                                                     ;
+; pll_extclk_1_cnt_src                 ; pll_extclk_cnt_src_vss ; String                                                                     ;
++--------------------------------------+------------------------+----------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: video_driver:v1|altera_up_avalon_video_vga_timing:video ;
++-------------------------+------------+---------------------------------------------------------------+
+; Parameter Name          ; Value      ; Type                                                          ;
++-------------------------+------------+---------------------------------------------------------------+
+; CW                      ; 9          ; Signed Integer                                                ;
+; H_ACTIVE                ; 640        ; Signed Integer                                                ;
+; H_FRONT_PORCH           ; 16         ; Signed Integer                                                ;
+; H_SYNC                  ; 96         ; Signed Integer                                                ;
+; H_BACK_PORCH            ; 48         ; Signed Integer                                                ;
+; H_TOTAL                 ; 800        ; Signed Integer                                                ;
+; V_ACTIVE                ; 480        ; Signed Integer                                                ;
+; V_FRONT_PORCH           ; 10         ; Signed Integer                                                ;
+; V_SYNC                  ; 2          ; Signed Integer                                                ;
+; V_BACK_PORCH            ; 33         ; Signed Integer                                                ;
+; V_TOTAL                 ; 525        ; Signed Integer                                                ;
+; PW                      ; 10         ; Signed Integer                                                ;
+; PIXEL_COUNTER_INCREMENT ; 0000000001 ; Unsigned Binary                                               ;
+; LW                      ; 10         ; Signed Integer                                                ;
+; LINE_COUNTER_INCREMENT  ; 0000000001 ; Unsigned Binary                                               ;
++-------------------------+------------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: user_input:oui|sync:s ;
++----------------+-------+-------------------------------------------+
+; Parameter Name ; Value ; Type                                      ;
++----------------+-------+-------------------------------------------+
+; W              ; 1     ; Signed Integer                            ;
++----------------+-------+-------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: user_input:ouii|sync:s ;
++----------------+-------+--------------------------------------------+
+; Parameter Name ; Value ; Type                                       ;
++----------------+-------+--------------------------------------------+
+; W              ; 1     ; Signed Integer                             ;
++----------------+-------+--------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game_screen_manager:gdm ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; Y_GROUND       ; 300   ; Signed Integer                              ;
+; Y_TOP          ; 0     ; Signed Integer                              ;
+; GRAVITY        ; 1     ; Signed Integer                              ;
+; JUMP_VY        ; -20   ; Signed Integer                              ;
+; SPRITE_SIZE    ; 20    ; Signed Integer                              ;
+; X_LEFT         ; 100   ; Signed Integer                              ;
+; NUM_OBS        ; 10    ; Signed Integer                              ;
+; POWER_UP_TOP   ; 100   ; Signed Integer                              ;
+; DEPTH          ; 64    ; Signed Integer                              ;
+; RAD            ; 10    ; Signed Integer                              ;
+; RAD_2          ; 100   ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game_screen_manager:gdm|user_movement:umm ;
++----------------+-------+---------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                          ;
++----------------+-------+---------------------------------------------------------------+
+; Y_GROUND       ; 300   ; Signed Integer                                                ;
+; Y_TOP          ; 0     ; Signed Integer                                                ;
+; GRAVITY        ; 1     ; Signed Integer                                                ;
+; JUMP_VY        ; -20   ; Signed Integer                                                ;
+; SPRITE_SIZE    ; 20    ; Signed Integer                                                ;
++----------------+-------+---------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game_screen_manager:gdm|object_manager:arrr ;
++----------------+-------+-----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                            ;
++----------------+-------+-----------------------------------------------------------------+
+; DEPTH          ; 64    ; Signed Integer                                                  ;
++----------------+-------+-----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: game_screen_manager:gdm|collision:col ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; Y_GROUND       ; 300   ; Signed Integer                                            ;
+; SPRITE_SIZE    ; 20    ; Signed Integer                                            ;
+; PLAYER_X       ; 100   ; Signed Integer                                            ;
+; DEPTH          ; 64    ; Signed Integer                                            ;
+; CHUNK_W        ; 10    ; Signed Integer                                            ;
+; POWER_UP_TOP   ; 100   ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+-----------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                ;
++------------------------------------+----------------------+-----------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                             ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                          ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                        ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                        ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                      ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                             ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                             ;
+; WIDTH_A                            ; 640                  ; Signed Integer                                      ;
+; WIDTHAD_A                          ; 9                    ; Signed Integer                                      ;
+; NUMWORDS_A                         ; 480                  ; Signed Integer                                      ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                             ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                             ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                             ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                             ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                             ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                             ;
+; WIDTH_B                            ; 1                    ; Untyped                                             ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                             ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                             ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                             ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                             ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                             ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                             ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                             ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                             ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                             ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                             ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                             ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                             ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                             ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                             ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                      ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                             ;
+; RAM_BLOCK_TYPE                     ; M10K                 ; Untyped                                             ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                             ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                             ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                             ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                             ;
+; INIT_FILE                          ; end_screen.mif       ; Untyped                                             ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                             ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                             ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                             ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                             ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                             ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                             ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                             ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                             ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                             ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                             ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                             ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                             ;
+; CBXI_PARAMETER                     ; altsyncram_2ii1      ; Untyped                                             ;
++------------------------------------+----------------------+-----------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component ;
++------------------------------------+----------------------+---------------------------------------------------------+
+; Parameter Name                     ; Value                ; Type                                                    ;
++------------------------------------+----------------------+---------------------------------------------------------+
+; BYTE_SIZE_BLOCK                    ; 8                    ; Untyped                                                 ;
+; AUTO_CARRY_CHAINS                  ; ON                   ; AUTO_CARRY                                              ;
+; IGNORE_CARRY_BUFFERS               ; OFF                  ; IGNORE_CARRY                                            ;
+; AUTO_CASCADE_CHAINS                ; ON                   ; AUTO_CASCADE                                            ;
+; IGNORE_CASCADE_BUFFERS             ; OFF                  ; IGNORE_CASCADE                                          ;
+; WIDTH_BYTEENA                      ; 1                    ; Untyped                                                 ;
+; OPERATION_MODE                     ; ROM                  ; Untyped                                                 ;
+; WIDTH_A                            ; 640                  ; Signed Integer                                          ;
+; WIDTHAD_A                          ; 9                    ; Signed Integer                                          ;
+; NUMWORDS_A                         ; 480                  ; Signed Integer                                          ;
+; OUTDATA_REG_A                      ; UNREGISTERED         ; Untyped                                                 ;
+; ADDRESS_ACLR_A                     ; NONE                 ; Untyped                                                 ;
+; OUTDATA_ACLR_A                     ; NONE                 ; Untyped                                                 ;
+; WRCONTROL_ACLR_A                   ; NONE                 ; Untyped                                                 ;
+; INDATA_ACLR_A                      ; NONE                 ; Untyped                                                 ;
+; BYTEENA_ACLR_A                     ; NONE                 ; Untyped                                                 ;
+; WIDTH_B                            ; 1                    ; Untyped                                                 ;
+; WIDTHAD_B                          ; 1                    ; Untyped                                                 ;
+; NUMWORDS_B                         ; 1                    ; Untyped                                                 ;
+; INDATA_REG_B                       ; CLOCK1               ; Untyped                                                 ;
+; WRCONTROL_WRADDRESS_REG_B          ; CLOCK1               ; Untyped                                                 ;
+; RDCONTROL_REG_B                    ; CLOCK1               ; Untyped                                                 ;
+; ADDRESS_REG_B                      ; CLOCK1               ; Untyped                                                 ;
+; OUTDATA_REG_B                      ; UNREGISTERED         ; Untyped                                                 ;
+; BYTEENA_REG_B                      ; CLOCK1               ; Untyped                                                 ;
+; INDATA_ACLR_B                      ; NONE                 ; Untyped                                                 ;
+; WRCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                 ;
+; ADDRESS_ACLR_B                     ; NONE                 ; Untyped                                                 ;
+; OUTDATA_ACLR_B                     ; NONE                 ; Untyped                                                 ;
+; RDCONTROL_ACLR_B                   ; NONE                 ; Untyped                                                 ;
+; BYTEENA_ACLR_B                     ; NONE                 ; Untyped                                                 ;
+; WIDTH_BYTEENA_A                    ; 1                    ; Signed Integer                                          ;
+; WIDTH_BYTEENA_B                    ; 1                    ; Untyped                                                 ;
+; RAM_BLOCK_TYPE                     ; M10K                 ; Untyped                                                 ;
+; BYTE_SIZE                          ; 8                    ; Untyped                                                 ;
+; READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE            ; Untyped                                                 ;
+; READ_DURING_WRITE_MODE_PORT_A      ; NEW_DATA_NO_NBE_READ ; Untyped                                                 ;
+; READ_DURING_WRITE_MODE_PORT_B      ; NEW_DATA_NO_NBE_READ ; Untyped                                                 ;
+; INIT_FILE                          ; start_screen.mif     ; Untyped                                                 ;
+; INIT_FILE_LAYOUT                   ; PORT_A               ; Untyped                                                 ;
+; MAXIMUM_DEPTH                      ; 0                    ; Untyped                                                 ;
+; CLOCK_ENABLE_INPUT_A               ; BYPASS               ; Untyped                                                 ;
+; CLOCK_ENABLE_INPUT_B               ; NORMAL               ; Untyped                                                 ;
+; CLOCK_ENABLE_OUTPUT_A              ; BYPASS               ; Untyped                                                 ;
+; CLOCK_ENABLE_OUTPUT_B              ; NORMAL               ; Untyped                                                 ;
+; CLOCK_ENABLE_CORE_A                ; USE_INPUT_CLKEN      ; Untyped                                                 ;
+; CLOCK_ENABLE_CORE_B                ; USE_INPUT_CLKEN      ; Untyped                                                 ;
+; ENABLE_ECC                         ; FALSE                ; Untyped                                                 ;
+; ECC_PIPELINE_STAGE_ENABLED         ; FALSE                ; Untyped                                                 ;
+; WIDTH_ECCSTATUS                    ; 3                    ; Untyped                                                 ;
+; DEVICE_FAMILY                      ; Cyclone V            ; Untyped                                                 ;
+; CBXI_PARAMETER                     ; altsyncram_ppi1      ; Untyped                                                 ;
++------------------------------------+----------------------+---------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: game_screen_manager:gdm|collision:col|lpm_divide:Div1 ;
++------------------------+----------------+--------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                         ;
++------------------------+----------------+--------------------------------------------------------------+
+; LPM_WIDTHN             ; 8              ; Untyped                                                      ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_5am ; Untyped                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                               ;
++------------------------+----------------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: game_screen_manager:gdm|collision:col|lpm_divide:Div0 ;
++------------------------+----------------+--------------------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                                         ;
++------------------------+----------------+--------------------------------------------------------------+
+; LPM_WIDTHN             ; 7              ; Untyped                                                      ;
+; LPM_WIDTHD             ; 4              ; Untyped                                                      ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                                      ;
+; LPM_PIPELINE           ; 0              ; Untyped                                                      ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                                      ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                                      ;
+; CBXI_PARAMETER         ; lpm_divide_4am ; Untyped                                                      ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                                      ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                                      ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                                   ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                                 ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                                 ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                               ;
++------------------------+----------------+--------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for Inferred Entity Instance: game_screen_manager:gdm|lpm_divide:Div0 ;
++------------------------+----------------+------------------------------------------------+
+; Parameter Name         ; Value          ; Type                                           ;
++------------------------+----------------+------------------------------------------------+
+; LPM_WIDTHN             ; 11             ; Untyped                                        ;
+; LPM_WIDTHD             ; 4              ; Untyped                                        ;
+; LPM_NREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_DREPRESENTATION    ; UNSIGNED       ; Untyped                                        ;
+; LPM_PIPELINE           ; 0              ; Untyped                                        ;
+; LPM_REMAINDERPOSITIVE  ; TRUE           ; Untyped                                        ;
+; MAXIMIZE_SPEED         ; 5              ; Untyped                                        ;
+; CBXI_PARAMETER         ; lpm_divide_fbm ; Untyped                                        ;
+; CARRY_CHAIN            ; MANUAL         ; Untyped                                        ;
+; OPTIMIZE_FOR_SPEED     ; 5              ; Untyped                                        ;
+; AUTO_CARRY_CHAINS      ; ON             ; AUTO_CARRY                                     ;
+; IGNORE_CARRY_BUFFERS   ; OFF            ; IGNORE_CARRY                                   ;
+; AUTO_CASCADE_CHAINS    ; ON             ; AUTO_CASCADE                                   ;
+; IGNORE_CASCADE_BUFFERS ; OFF            ; IGNORE_CASCADE                                 ;
++------------------------+----------------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------------------------------+
+; altsyncram Parameter Settings by Entity Instance                                                                   ;
++-------------------------------------------+------------------------------------------------------------------------+
+; Name                                      ; Value                                                                  ;
++-------------------------------------------+------------------------------------------------------------------------+
+; Number of entity instances                ; 2                                                                      ;
+; Entity Instance                           ; end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component     ;
+;     -- OPERATION_MODE                     ; ROM                                                                    ;
+;     -- WIDTH_A                            ; 640                                                                    ;
+;     -- NUMWORDS_A                         ; 480                                                                    ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                           ;
+;     -- WIDTH_B                            ; 1                                                                      ;
+;     -- NUMWORDS_B                         ; 1                                                                      ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                 ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                           ;
+;     -- RAM_BLOCK_TYPE                     ; M10K                                                                   ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                              ;
+; Entity Instance                           ; start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component ;
+;     -- OPERATION_MODE                     ; ROM                                                                    ;
+;     -- WIDTH_A                            ; 640                                                                    ;
+;     -- NUMWORDS_A                         ; 480                                                                    ;
+;     -- OUTDATA_REG_A                      ; UNREGISTERED                                                           ;
+;     -- WIDTH_B                            ; 1                                                                      ;
+;     -- NUMWORDS_B                         ; 1                                                                      ;
+;     -- ADDRESS_REG_B                      ; CLOCK1                                                                 ;
+;     -- OUTDATA_REG_B                      ; UNREGISTERED                                                           ;
+;     -- RAM_BLOCK_TYPE                     ; M10K                                                                   ;
+;     -- READ_DURING_WRITE_MODE_MIXED_PORTS ; DONT_CARE                                                              ;
++-------------------------------------------+------------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "seg7:s5"         ;
++-----------+-------+----------+--------------+
+; Port      ; Type  ; Severity ; Details      ;
++-----------+-------+----------+--------------+
+; hex[3..1] ; Input ; Info     ; Stuck at GND ;
++-----------+-------+----------+--------------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game_screen_manager:gdm|spawn_lfsr:sp"                                                                       ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port     ; Type   ; Severity ; Details                                                                                                  ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; enable   ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; bias[10] ; Input  ; Info     ; Stuck at GND                                                                                             ;
+; Q        ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
+; S0       ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++----------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game_screen_manager:gdm|object_manager:arrr"                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; Port      ; Type   ; Severity ; Details                                                                             ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+; right_ptr ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-----------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "game_screen_manager:gdm|height_lfsr:uhf"                                                                   ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                                                  ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+; enable ; Input  ; Info     ; Stuck at VCC                                                                                             ;
+; S0     ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+----------------------------------------------------------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "video_driver:v1|altera_up_avalon_video_vga_timing:video"                                                  ;
++----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port                       ; Type   ; Severity ; Details                                                                             ;
++----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+; red_to_vga_display[9..8]   ; Input  ; Info     ; Stuck at GND                                                                        ;
+; green_to_vga_display[9..8] ; Input  ; Info     ; Stuck at GND                                                                        ;
+; blue_to_vga_display[9..8]  ; Input  ; Info     ; Stuck at GND                                                                        ;
+; color_select               ; Input  ; Info     ; Stuck at VCC                                                                        ;
+; end_of_frame               ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; vga_c_sync                 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; vga_data_enable            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; vga_red[9..8]              ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; vga_green[9..8]            ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; vga_blue[9..8]             ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; vga_color_data             ; Output ; Info     ; Explicitly unconnected                                                              ;
++----------------------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "video_driver:v1|CLOCK25_PLL:c25_gen"                                                  ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; Port   ; Type   ; Severity ; Details                                                                             ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+; locked ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++--------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++---------------------------------------------+
+; Port Connectivity Checks: "video_driver:v1" ;
++-------+-------+----------+------------------+
+; Port  ; Type  ; Severity ; Details          ;
++-------+-------+----------+------------------+
+; reset ; Input ; Info     ; Stuck at GND     ;
++-------+-------+----------+------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 1007                        ;
+;     ENA               ; 18                          ;
+;     ENA SCLR          ; 822                         ;
+;     ENA SLD           ; 9                           ;
+;     SCLR              ; 102                         ;
+;     plain             ; 56                          ;
+; arriav_lcell_comb     ; 2357                        ;
+;     arith             ; 339                         ;
+;         0 data inputs ; 37                          ;
+;         1 data inputs ; 188                         ;
+;         2 data inputs ; 62                          ;
+;         3 data inputs ; 31                          ;
+;         4 data inputs ; 21                          ;
+;     extend            ; 1                           ;
+;         7 data inputs ; 1                           ;
+;     normal            ; 2001                        ;
+;         0 data inputs ; 2                           ;
+;         1 data inputs ; 8                           ;
+;         2 data inputs ; 77                          ;
+;         3 data inputs ; 54                          ;
+;         4 data inputs ; 52                          ;
+;         5 data inputs ; 137                         ;
+;         6 data inputs ; 1671                        ;
+;     shared            ; 16                          ;
+;         0 data inputs ; 3                           ;
+;         1 data inputs ; 4                           ;
+;         2 data inputs ; 9                           ;
+; arriav_mac            ; 1                           ;
+; boundary_port         ; 96                          ;
+; generic_pll           ; 1                           ;
+; stratixv_ram_block    ; 1280                        ;
+;                       ;                             ;
+; Max LUT depth         ; 22.30                       ;
+; Average LUT depth     ; 9.12                        ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:05     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 17.0.0 Build 595 04/25/2017 SJ Lite Edition
+    Info: Processing started: Fri Jun 05 18:05:24 2026
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off part1 -c part1
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
+Info (12021): Found 1 design units, including 1 entities, in source file altera_up_avalon_video_vga_timing.v
+    Info (12023): Found entity 1: altera_up_avalon_video_vga_timing File: Z:/371/rhythm_rush/altera_up_avalon_video_vga_timing.v Line: 47
+Info (12021): Found 1 design units, including 1 entities, in source file clock25_pll.v
+    Info (12023): Found entity 1: CLOCK25_PLL File: Z:/371/rhythm_rush/CLOCK25_PLL.v Line: 8
+Info (12021): Found 1 design units, including 1 entities, in source file clock25_pll_0002.v
+    Info (12023): Found entity 1: CLOCK25_PLL_0002 File: Z:/371/rhythm_rush/CLOCK25_PLL_0002.v Line: 2
+Info (12021): Found 2 design units, including 2 entities, in source file collision.sv
+    Info (12023): Found entity 1: collision File: Z:/371/rhythm_rush/collision.sv Line: 19
+    Info (12023): Found entity 2: collision_tb File: Z:/371/rhythm_rush/collision.sv Line: 107
+Info (12021): Found 1 design units, including 1 entities, in source file counter.sv
+    Info (12023): Found entity 1: counter File: Z:/371/rhythm_rush/counter.sv Line: 11
+Info (12021): Found 2 design units, including 2 entities, in source file de1_soc.sv
+    Info (12023): Found entity 1: DE1_SoC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 17
+    Info (12023): Found entity 2: DE1_SoC_testbench File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 117
+Info (12021): Found 1 design units, including 1 entities, in source file end_rom.v
+    Info (12023): Found entity 1: end_ROM File: Z:/371/rhythm_rush/end_ROM.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file end_screen_manager.sv
+    Info (12023): Found entity 1: end_screen_manager File: Z:/371/rhythm_rush/end_screen_manager.sv Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file game_screen_manager.sv
+    Info (12023): Found entity 1: game_screen_manager File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 24
+Info (12021): Found 2 design units, including 2 entities, in source file height_lfsr.sv
+    Info (12023): Found entity 1: height_lfsr File: Z:/371/rhythm_rush/height_lfsr.sv Line: 14
+    Info (12023): Found entity 2: height_lfsr_tb File: Z:/371/rhythm_rush/height_lfsr.sv Line: 34
+Info (12021): Found 2 design units, including 2 entities, in source file object_manager.sv
+    Info (12023): Found entity 1: object_manager File: Z:/371/rhythm_rush/object_manager.sv Line: 27
+    Info (12023): Found entity 2: object_manager_tb File: Z:/371/rhythm_rush/object_manager.sv Line: 70
+Info (12021): Found 1 design units, including 1 entities, in source file obstacle_enable.sv
+    Info (12023): Found entity 1: obstacle_enable File: Z:/371/rhythm_rush/obstacle_enable.sv Line: 10
+Info (12021): Found 1 design units, including 1 entities, in source file pulse.sv
+    Info (12023): Found entity 1: pulse File: Z:/371/rhythm_rush/pulse.sv Line: 11
+Info (12021): Found 2 design units, including 2 entities, in source file screen_controller.sv
+    Info (12023): Found entity 1: screen_controller File: Z:/371/rhythm_rush/screen_controller.sv Line: 15
+    Info (12023): Found entity 2: screen_controller_tb File: Z:/371/rhythm_rush/screen_controller.sv Line: 51
+Info (12021): Found 1 design units, including 1 entities, in source file seg7.sv
+    Info (12023): Found entity 1: seg7 File: Z:/371/rhythm_rush/seg7.sv Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file slower_enable.sv
+    Info (12023): Found entity 1: slower_enable File: Z:/371/rhythm_rush/slower_enable.sv Line: 10
+Info (12021): Found 2 design units, including 2 entities, in source file spawn_lfsr.sv
+    Info (12023): Found entity 1: spawn_lfsr File: Z:/371/rhythm_rush/spawn_lfsr.sv Line: 17
+    Info (12023): Found entity 2: spawn_lfsr_tb File: Z:/371/rhythm_rush/spawn_lfsr.sv Line: 43
+Info (12021): Found 1 design units, including 1 entities, in source file start_rom.v
+    Info (12023): Found entity 1: start_ROM File: Z:/371/rhythm_rush/start_ROM.v Line: 40
+Info (12021): Found 1 design units, including 1 entities, in source file start_screen_manager.sv
+    Info (12023): Found entity 1: start_screen_manager File: Z:/371/rhythm_rush/start_screen_manager.sv Line: 14
+Info (12021): Found 1 design units, including 1 entities, in source file sync.sv
+    Info (12023): Found entity 1: sync File: Z:/371/rhythm_rush/sync.sv Line: 12
+Info (12021): Found 2 design units, including 2 entities, in source file user_movement.sv
+    Info (12023): Found entity 1: user_movement File: Z:/371/rhythm_rush/user_movement.sv Line: 13
+    Info (12023): Found entity 2: user_movement_tb File: Z:/371/rhythm_rush/user_movement.sv Line: 71
+Info (12021): Found 1 design units, including 1 entities, in source file userinput.sv
+    Info (12023): Found entity 1: user_input File: Z:/371/rhythm_rush/userInput.sv Line: 11
+Info (12021): Found 1 design units, including 1 entities, in source file video_driver.sv
+    Info (12023): Found entity 1: video_driver File: Z:/371/rhythm_rush/video_driver.sv Line: 1
+Info (12021): Found 2 design units, including 2 entities, in source file user_state_controller.sv
+    Info (12023): Found entity 1: user_state_controller File: Z:/371/rhythm_rush/user_state_controller.sv Line: 17
+    Info (12023): Found entity 2: user_state_controller_tb File: Z:/371/rhythm_rush/user_state_controller.sv Line: 54
+Warning (10236): Verilog HDL Implicit Net warning at DE1_SoC.sv(57): created implicit net for "rst" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 57
+Critical Warning (10846): Verilog HDL Instantiation warning at game_screen_manager.sv(154): instance has no name File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 154
+Info (12127): Elaborating entity "DE1_SoC" for the top level hierarchy
+Warning (10034): Output port "LEDR[7..1]" at DE1_SoC.sv(32) has no driver File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+Info (12128): Elaborating entity "video_driver" for hierarchy "video_driver:v1" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 54
+Info (12128): Elaborating entity "CLOCK25_PLL" for hierarchy "video_driver:v1|CLOCK25_PLL:c25_gen" File: Z:/371/rhythm_rush/video_driver.sv Line: 41
+Info (12128): Elaborating entity "CLOCK25_PLL_0002" for hierarchy "video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst" File: Z:/371/rhythm_rush/CLOCK25_PLL.v Line: 20
+Info (12128): Elaborating entity "altera_pll" for hierarchy "video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst|altera_pll:altera_pll_i" File: Z:/371/rhythm_rush/CLOCK25_PLL_0002.v Line: 85
+Info (10008): Verilog HDL or VHDL information: EDA Netlist Writer cannot regroup multidimensional array "wire_to_nowhere_64" into its bus
+Info (12130): Elaborated megafunction instantiation "video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst|altera_pll:altera_pll_i" File: Z:/371/rhythm_rush/CLOCK25_PLL_0002.v Line: 85
+Info (12133): Instantiated megafunction "video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst|altera_pll:altera_pll_i" with the following parameter: File: Z:/371/rhythm_rush/CLOCK25_PLL_0002.v Line: 85
+    Info (12134): Parameter "fractional_vco_multiplier" = "false"
+    Info (12134): Parameter "reference_clock_frequency" = "50.0 MHz"
+    Info (12134): Parameter "operation_mode" = "direct"
+    Info (12134): Parameter "number_of_clocks" = "1"
+    Info (12134): Parameter "output_clock_frequency0" = "25.000000 MHz"
+    Info (12134): Parameter "phase_shift0" = "0 ps"
+    Info (12134): Parameter "duty_cycle0" = "50"
+    Info (12134): Parameter "output_clock_frequency1" = "0 MHz"
+    Info (12134): Parameter "phase_shift1" = "0 ps"
+    Info (12134): Parameter "duty_cycle1" = "50"
+    Info (12134): Parameter "output_clock_frequency2" = "0 MHz"
+    Info (12134): Parameter "phase_shift2" = "0 ps"
+    Info (12134): Parameter "duty_cycle2" = "50"
+    Info (12134): Parameter "output_clock_frequency3" = "0 MHz"
+    Info (12134): Parameter "phase_shift3" = "0 ps"
+    Info (12134): Parameter "duty_cycle3" = "50"
+    Info (12134): Parameter "output_clock_frequency4" = "0 MHz"
+    Info (12134): Parameter "phase_shift4" = "0 ps"
+    Info (12134): Parameter "duty_cycle4" = "50"
+    Info (12134): Parameter "output_clock_frequency5" = "0 MHz"
+    Info (12134): Parameter "phase_shift5" = "0 ps"
+    Info (12134): Parameter "duty_cycle5" = "50"
+    Info (12134): Parameter "output_clock_frequency6" = "0 MHz"
+    Info (12134): Parameter "phase_shift6" = "0 ps"
+    Info (12134): Parameter "duty_cycle6" = "50"
+    Info (12134): Parameter "output_clock_frequency7" = "0 MHz"
+    Info (12134): Parameter "phase_shift7" = "0 ps"
+    Info (12134): Parameter "duty_cycle7" = "50"
+    Info (12134): Parameter "output_clock_frequency8" = "0 MHz"
+    Info (12134): Parameter "phase_shift8" = "0 ps"
+    Info (12134): Parameter "duty_cycle8" = "50"
+    Info (12134): Parameter "output_clock_frequency9" = "0 MHz"
+    Info (12134): Parameter "phase_shift9" = "0 ps"
+    Info (12134): Parameter "duty_cycle9" = "50"
+    Info (12134): Parameter "output_clock_frequency10" = "0 MHz"
+    Info (12134): Parameter "phase_shift10" = "0 ps"
+    Info (12134): Parameter "duty_cycle10" = "50"
+    Info (12134): Parameter "output_clock_frequency11" = "0 MHz"
+    Info (12134): Parameter "phase_shift11" = "0 ps"
+    Info (12134): Parameter "duty_cycle11" = "50"
+    Info (12134): Parameter "output_clock_frequency12" = "0 MHz"
+    Info (12134): Parameter "phase_shift12" = "0 ps"
+    Info (12134): Parameter "duty_cycle12" = "50"
+    Info (12134): Parameter "output_clock_frequency13" = "0 MHz"
+    Info (12134): Parameter "phase_shift13" = "0 ps"
+    Info (12134): Parameter "duty_cycle13" = "50"
+    Info (12134): Parameter "output_clock_frequency14" = "0 MHz"
+    Info (12134): Parameter "phase_shift14" = "0 ps"
+    Info (12134): Parameter "duty_cycle14" = "50"
+    Info (12134): Parameter "output_clock_frequency15" = "0 MHz"
+    Info (12134): Parameter "phase_shift15" = "0 ps"
+    Info (12134): Parameter "duty_cycle15" = "50"
+    Info (12134): Parameter "output_clock_frequency16" = "0 MHz"
+    Info (12134): Parameter "phase_shift16" = "0 ps"
+    Info (12134): Parameter "duty_cycle16" = "50"
+    Info (12134): Parameter "output_clock_frequency17" = "0 MHz"
+    Info (12134): Parameter "phase_shift17" = "0 ps"
+    Info (12134): Parameter "duty_cycle17" = "50"
+    Info (12134): Parameter "pll_type" = "General"
+    Info (12134): Parameter "pll_subtype" = "General"
+Info (12128): Elaborating entity "altera_up_avalon_video_vga_timing" for hierarchy "video_driver:v1|altera_up_avalon_video_vga_timing:video" File: Z:/371/rhythm_rush/video_driver.sv Line: 144
+Info (12128): Elaborating entity "user_input" for hierarchy "user_input:oui" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 62
+Info (12128): Elaborating entity "sync" for hierarchy "user_input:oui|sync:s" File: Z:/371/rhythm_rush/userInput.sv Line: 13
+Info (12128): Elaborating entity "pulse" for hierarchy "user_input:oui|pulse:p" File: Z:/371/rhythm_rush/userInput.sv Line: 14
+Info (12128): Elaborating entity "game_screen_manager" for hierarchy "game_screen_manager:gdm" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 67
+Warning (10230): Verilog HDL assignment warning at game_screen_manager.sv(103): truncated value with size 32 to match size of target (12) File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 103
+Warning (10230): Verilog HDL assignment warning at game_screen_manager.sv(104): truncated value with size 32 to match size of target (12) File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 104
+Info (12128): Elaborating entity "user_movement" for hierarchy "game_screen_manager:gdm|user_movement:umm" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 127
+Warning (10230): Verilog HDL assignment warning at user_movement.sv(35): truncated value with size 32 to match size of target (11) File: Z:/371/rhythm_rush/user_movement.sv Line: 35
+Warning (10230): Verilog HDL assignment warning at user_movement.sv(38): truncated value with size 32 to match size of target (11) File: Z:/371/rhythm_rush/user_movement.sv Line: 38
+Warning (10230): Verilog HDL assignment warning at user_movement.sv(42): truncated value with size 32 to match size of target (11) File: Z:/371/rhythm_rush/user_movement.sv Line: 42
+Warning (10230): Verilog HDL assignment warning at user_movement.sv(45): truncated value with size 32 to match size of target (11) File: Z:/371/rhythm_rush/user_movement.sv Line: 45
+Warning (10230): Verilog HDL assignment warning at user_movement.sv(54): truncated value with size 32 to match size of target (11) File: Z:/371/rhythm_rush/user_movement.sv Line: 54
+Info (12128): Elaborating entity "slower_enable" for hierarchy "game_screen_manager:gdm|slower_enable:erm" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 128
+Warning (10230): Verilog HDL assignment warning at slower_enable.sv(18): truncated value with size 32 to match size of target (21) File: Z:/371/rhythm_rush/slower_enable.sv Line: 18
+Info (12128): Elaborating entity "obstacle_enable" for hierarchy "game_screen_manager:gdm|obstacle_enable:qhhh" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 141
+Warning (10230): Verilog HDL assignment warning at obstacle_enable.sv(18): truncated value with size 32 to match size of target (20) File: Z:/371/rhythm_rush/obstacle_enable.sv Line: 18
+Info (12128): Elaborating entity "height_lfsr" for hierarchy "game_screen_manager:gdm|height_lfsr:uhf" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 142
+Info (12128): Elaborating entity "object_manager" for hierarchy "game_screen_manager:gdm|object_manager:arrr" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 145
+Warning (10230): Verilog HDL assignment warning at object_manager.sv(46): truncated value with size 32 to match size of target (6) File: Z:/371/rhythm_rush/object_manager.sv Line: 46
+Warning (10230): Verilog HDL assignment warning at object_manager.sv(54): truncated value with size 32 to match size of target (6) File: Z:/371/rhythm_rush/object_manager.sv Line: 54
+Warning (10230): Verilog HDL assignment warning at object_manager.sv(56): truncated value with size 32 to match size of target (6) File: Z:/371/rhythm_rush/object_manager.sv Line: 56
+Warning (10230): Verilog HDL assignment warning at object_manager.sv(62): truncated value with size 32 to match size of target (4) File: Z:/371/rhythm_rush/object_manager.sv Line: 62
+Info (12128): Elaborating entity "spawn_lfsr" for hierarchy "game_screen_manager:gdm|spawn_lfsr:sp" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 146
+Info (12128): Elaborating entity "collision" for hierarchy "game_screen_manager:gdm|collision:col" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 149
+Warning (10230): Verilog HDL assignment warning at collision.sv(46): truncated value with size 32 to match size of target (9) File: Z:/371/rhythm_rush/collision.sv Line: 46
+Warning (10230): Verilog HDL assignment warning at collision.sv(48): truncated value with size 32 to match size of target (7) File: Z:/371/rhythm_rush/collision.sv Line: 48
+Warning (10230): Verilog HDL assignment warning at collision.sv(49): truncated value with size 32 to match size of target (7) File: Z:/371/rhythm_rush/collision.sv Line: 49
+Warning (10230): Verilog HDL assignment warning at collision.sv(50): truncated value with size 32 to match size of target (7) File: Z:/371/rhythm_rush/collision.sv Line: 50
+Warning (10230): Verilog HDL assignment warning at collision.sv(52): truncated value with size 7 to match size of target (6) File: Z:/371/rhythm_rush/collision.sv Line: 52
+Warning (10230): Verilog HDL assignment warning at collision.sv(53): truncated value with size 7 to match size of target (6) File: Z:/371/rhythm_rush/collision.sv Line: 53
+Warning (10230): Verilog HDL assignment warning at collision.sv(54): truncated value with size 7 to match size of target (6) File: Z:/371/rhythm_rush/collision.sv Line: 54
+Warning (10230): Verilog HDL assignment warning at collision.sv(64): truncated value with size 32 to match size of target (9) File: Z:/371/rhythm_rush/collision.sv Line: 64
+Warning (10230): Verilog HDL assignment warning at collision.sv(65): truncated value with size 32 to match size of target (9) File: Z:/371/rhythm_rush/collision.sv Line: 65
+Warning (10230): Verilog HDL assignment warning at collision.sv(66): truncated value with size 32 to match size of target (9) File: Z:/371/rhythm_rush/collision.sv Line: 66
+Info (12128): Elaborating entity "user_state_controller" for hierarchy "game_screen_manager:gdm|user_state_controller:comb_420" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 154
+Info (12128): Elaborating entity "counter" for hierarchy "game_screen_manager:gdm|counter:csjsd" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 156
+Warning (10230): Verilog HDL assignment warning at counter.sv(20): truncated value with size 32 to match size of target (5) File: Z:/371/rhythm_rush/counter.sv Line: 20
+Info (12128): Elaborating entity "end_screen_manager" for hierarchy "end_screen_manager:esm" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 69
+Info (12128): Elaborating entity "end_ROM" for hierarchy "end_screen_manager:esm|end_ROM:esr" File: Z:/371/rhythm_rush/end_screen_manager.sv Line: 23
+Info (12128): Elaborating entity "altsyncram" for hierarchy "end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component" File: Z:/371/rhythm_rush/end_ROM.v Line: 82
+Info (12130): Elaborated megafunction instantiation "end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component" File: Z:/371/rhythm_rush/end_ROM.v Line: 82
+Info (12133): Instantiated megafunction "end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component" with the following parameter: File: Z:/371/rhythm_rush/end_ROM.v Line: 82
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "end_screen.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "480"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "ram_block_type" = "M10K"
+    Info (12134): Parameter "widthad_a" = "9"
+    Info (12134): Parameter "width_a" = "640"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_2ii1.tdf
+    Info (12023): Found entity 1: altsyncram_2ii1 File: Z:/371/rhythm_rush/db/altsyncram_2ii1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_2ii1" for hierarchy "end_screen_manager:esm|end_ROM:esr|altsyncram:altsyncram_component|altsyncram_2ii1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "start_screen_manager" for hierarchy "start_screen_manager:ssm" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 70
+Info (12128): Elaborating entity "start_ROM" for hierarchy "start_screen_manager:ssm|start_ROM:str" File: Z:/371/rhythm_rush/start_screen_manager.sv Line: 23
+Info (12128): Elaborating entity "altsyncram" for hierarchy "start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component" File: Z:/371/rhythm_rush/start_ROM.v Line: 82
+Info (12130): Elaborated megafunction instantiation "start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component" File: Z:/371/rhythm_rush/start_ROM.v Line: 82
+Info (12133): Instantiated megafunction "start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component" with the following parameter: File: Z:/371/rhythm_rush/start_ROM.v Line: 82
+    Info (12134): Parameter "address_aclr_a" = "NONE"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "init_file" = "start_screen.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone V"
+    Info (12134): Parameter "lpm_hint" = "ENABLE_RUNTIME_MOD=NO"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "480"
+    Info (12134): Parameter "operation_mode" = "ROM"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "ram_block_type" = "M10K"
+    Info (12134): Parameter "widthad_a" = "9"
+    Info (12134): Parameter "width_a" = "640"
+    Info (12134): Parameter "width_byteena_a" = "1"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ppi1.tdf
+    Info (12023): Found entity 1: altsyncram_ppi1 File: Z:/371/rhythm_rush/db/altsyncram_ppi1.tdf Line: 28
+Info (12128): Elaborating entity "altsyncram_ppi1" for hierarchy "start_screen_manager:ssm|start_ROM:str|altsyncram:altsyncram_component|altsyncram_ppi1:auto_generated" File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altsyncram.tdf Line: 792
+Info (12128): Elaborating entity "screen_controller" for hierarchy "screen_controller:dsm" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 73
+Info (12128): Elaborating entity "seg7" for hierarchy "seg7:s5" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 103
+Info (278001): Inferred 3 megafunctions from design logic
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game_screen_manager:gdm|collision:col|Div1" File: Z:/371/rhythm_rush/collision.sv Line: 49
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game_screen_manager:gdm|collision:col|Div0" File: Z:/371/rhythm_rush/collision.sv Line: 48
+    Info (278004): Inferred divider/modulo megafunction ("lpm_divide") from the following logic: "game_screen_manager:gdm|Div0" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 71
+Info (12130): Elaborated megafunction instantiation "game_screen_manager:gdm|collision:col|lpm_divide:Div1" File: Z:/371/rhythm_rush/collision.sv Line: 49
+Info (12133): Instantiated megafunction "game_screen_manager:gdm|collision:col|lpm_divide:Div1" with the following parameter: File: Z:/371/rhythm_rush/collision.sv Line: 49
+    Info (12134): Parameter "LPM_WIDTHN" = "8"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_5am.tdf
+    Info (12023): Found entity 1: lpm_divide_5am File: Z:/371/rhythm_rush/db/lpm_divide_5am.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_bkh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_bkh File: Z:/371/rhythm_rush/db/sign_div_unsign_bkh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_sse.tdf
+    Info (12023): Found entity 1: alt_u_div_sse File: Z:/371/rhythm_rush/db/alt_u_div_sse.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "game_screen_manager:gdm|collision:col|lpm_divide:Div0" File: Z:/371/rhythm_rush/collision.sv Line: 48
+Info (12133): Instantiated megafunction "game_screen_manager:gdm|collision:col|lpm_divide:Div0" with the following parameter: File: Z:/371/rhythm_rush/collision.sv Line: 48
+    Info (12134): Parameter "LPM_WIDTHN" = "7"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_4am.tdf
+    Info (12023): Found entity 1: lpm_divide_4am File: Z:/371/rhythm_rush/db/lpm_divide_4am.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_akh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_akh File: Z:/371/rhythm_rush/db/sign_div_unsign_akh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_qse.tdf
+    Info (12023): Found entity 1: alt_u_div_qse File: Z:/371/rhythm_rush/db/alt_u_div_qse.tdf Line: 23
+Info (12130): Elaborated megafunction instantiation "game_screen_manager:gdm|lpm_divide:Div0" File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 71
+Info (12133): Instantiated megafunction "game_screen_manager:gdm|lpm_divide:Div0" with the following parameter: File: Z:/371/rhythm_rush/game_screen_manager.sv Line: 71
+    Info (12134): Parameter "LPM_WIDTHN" = "11"
+    Info (12134): Parameter "LPM_WIDTHD" = "4"
+    Info (12134): Parameter "LPM_NREPRESENTATION" = "UNSIGNED"
+    Info (12134): Parameter "LPM_DREPRESENTATION" = "UNSIGNED"
+Info (12021): Found 1 design units, including 1 entities, in source file db/lpm_divide_fbm.tdf
+    Info (12023): Found entity 1: lpm_divide_fbm File: Z:/371/rhythm_rush/db/lpm_divide_fbm.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/sign_div_unsign_llh.tdf
+    Info (12023): Found entity 1: sign_div_unsign_llh File: Z:/371/rhythm_rush/db/sign_div_unsign_llh.tdf Line: 25
+Info (12021): Found 1 design units, including 1 entities, in source file db/alt_u_div_gve.tdf
+    Info (12023): Found entity 1: alt_u_div_gve File: Z:/371/rhythm_rush/db/alt_u_div_gve.tdf Line: 23
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX1[1]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX1[2]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX1[6]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX2[0]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX2[1]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX2[2]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX2[3]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX2[4]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX2[5]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX2[6]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX3[0]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX3[1]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX3[2]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX3[3]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX3[4]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX3[5]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX3[6]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX4[0]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX4[1]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX4[2]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX4[3]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX4[4]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX4[5]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX4[6]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX5[0]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX5[1]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX5[2]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX5[3]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX5[4]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX5[5]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "HEX5[6]" is stuck at VCC File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 31
+    Warning (13410): Pin "LEDR[1]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+    Warning (13410): Pin "LEDR[2]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 32
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 43
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 2 registers lost all their fanouts during netlist optimizations.
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 5 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
+Warning: RST port on the PLL is not properly connected on instance video_driver:v1|CLOCK25_PLL:c25_gen|CLOCK25_PLL_0002:clock25_pll_inst|altera_pll:altera_pll_i|general[0].gpll. The reset port on the PLL should be connected. If the PLL loses lock for any reason, you might need to manually reset the PLL in order to re-establish lock to the reference clock. File: c:/intelfpga_lite/17.0/quartus/libraries/megafunctions/altera_pll.v Line: 749
+    Info: Must be connected
+Warning (21074): Design contains 2 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "KEY[1]" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 33
+    Warning (15610): No output dependent on input pin "KEY[2]" File: Z:/371/rhythm_rush/DE1_SoC.sv Line: 33
+Info (21057): Implemented 4545 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 15 input pins
+    Info (21059): Implemented 81 output pins
+    Info (21061): Implemented 3167 logic cells
+    Info (21064): Implemented 1280 RAM segments
+    Info (21065): Implemented 1 PLLs
+    Info (21062): Implemented 1 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 73 warnings
+    Info: Peak virtual memory: 4901 megabytes
+    Info: Processing ended: Fri Jun 05 18:05:49 2026
+    Info: Elapsed time: 00:00:25
+    Info: Total CPU time (on all processors): 00:00:34
+
+

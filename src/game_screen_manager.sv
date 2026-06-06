@@ -116,20 +116,6 @@ module game_screen_manager  #(
                 end
             end
         end
-    
-        // sprite box
-        // if ((x >= X_LEFT) && (x < X_LEFT + SPRITE_SIZE) &&
-        //     (y >= y_coord)   && (y < y_coord + SPRITE_SIZE)) begin
-        //     if (immune) begin
-        //         r_next = 8'd204;
-        //         g_next = 8'd0;
-        //         b_next = 8'd204;
-        //     end else begin
-        //         r_next = 8'h0;
-        //         g_next = 8'h0;
-        //         b_next = 8'hFF;
-        //     end
-        // end
     end // always_comb
     
 
@@ -165,7 +151,7 @@ module game_screen_manager  #(
     pulse p (.clk, .rst, .in(power_up_detected), .out(power_up_gained));
     pulse p2 (.clk, .rst, .in(crash_detected), .out(crash));
     
-    user_state_FSM (.rst, .clk, .crash(crash), .power_up_gained, .dead, .immune);
+    user_state_controller (.rst, .clk, .crash(crash), .power_up_gained, .dead, .immune);
     
     counter csjsd(.clk, .rst, .enable(power_up_gained), .cnt(score));
     

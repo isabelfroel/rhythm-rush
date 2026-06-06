@@ -1,0 +1,727 @@
+# Reading C:/intelFPGA_lite/17.0/modelsim_ase/tcl/vsim/pref.tcl
+do runlab_user_state_controller.do
+# ** Error: extra characters after close-quote
+# Error in macro ./runlab_user_state_controller.do line 12
+# extra characters after close-quote
+#     while executing
+# "vlog "./user_state_controller
+# 
+# Call vsim to invoke simulator
+#     Make sure the last item on the line is the name of the
+#     testbench module you..."
+do runlab_user_state_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:31:06 on Jun 05,2026
+# vlog -reportprogress 300 ./user_state_controller 
+# ** Error: (vlog-7) Failed to open design unit file "./user_state_controller" in read mode.
+# No such file or directory. (errno = ENOENT)
+# End time: 15:31:06 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/vlog failed.
+# Error in macro ./runlab_user_state_controller.do line 7
+# C:/intelFPGA_lite/17.0/modelsim_ase/win32aloem/vlog failed.
+#     while executing
+# "vlog "./user_state_controller""
+do runlab_user_state_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:31:17 on Jun 05,2026
+# vlog -reportprogress 300 ./user_state_controller.sv 
+# -- Compiling module user_state_FSM
+# -- Compiling module user_state_FSM_tb
+# 
+# Top level modules:
+# 	user_state_FSM_tb
+# End time: 15:31:17 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_state_controller_tb 
+# Start time: 15:31:20 on Jun 05,2026
+# ** Error: (vsim-3170) Could not find 'user_state_controller_tb'.
+#         Searched libraries:
+#             Z:/371/rhythm_rush/work
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./runlab_user_state_controller.do PAUSED at line 12
+do runlab_user_state_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:31:56 on Jun 05,2026
+# vlog -reportprogress 300 ./user_state_controller.sv 
+# -- Compiling module user_state_controller
+# -- Compiling module user_state_controller_tb
+# 
+# Top level modules:
+# 	user_state_controller
+# 	user_state_controller_tb
+# End time: 15:31:56 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_state_controller_tb 
+# Start time: 15:31:20 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_state_controller_tb
+# Loading work.user_state_FSM
+# ** Error: Cannot open macro file: wave_usc.do
+# Error in macro ./runlab_user_state_controller.do line 17
+# Cannot open macro file: wave_usc.do
+#     while executing
+# "do wave_usc.do"
+add wave -position end  sim:/user_state_controller_tb/dut/ns
+add wave -position end  sim:/user_state_controller_tb/dut/ps
+add wave -position 0  sim:/user_state_controller_tb/clk
+add wave -position end  sim:/user_state_controller_tb/crash
+add wave -position end  sim:/user_state_controller_tb/dead
+add wave -position end  sim:/user_state_controller_tb/immune
+add wave -position end  sim:/user_state_controller_tb/power_up_gained
+add wave -position end  sim:/user_state_controller_tb/rst
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_usc.do
+do runlab_user_state_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:34:07 on Jun 05,2026
+# vlog -reportprogress 300 ./user_state_controller.sv 
+# -- Compiling module user_state_controller
+# -- Compiling module user_state_controller_tb
+# 
+# Top level modules:
+# 	user_state_controller
+# 	user_state_controller_tb
+# End time: 15:34:07 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:34:08 on Jun 05,2026, Elapsed time: 0:02:48
+# Errors: 4, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_state_controller_tb 
+# Start time: 15:34:08 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_state_controller_tb
+# Loading work.user_state_FSM
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./user_state_controller.sv(82)
+#    Time: 190 ps  Iteration: 1  Instance: /user_state_controller_tb
+# Break in Module user_state_controller_tb at ./user_state_controller.sv line 82
+do runlab_user_movement.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:56:50 on Jun 05,2026
+# vlog -reportprogress 300 ./user_movement.sv 
+# -- Compiling module user_movement
+# -- Compiling module user_movement_tb
+# 
+# Top level modules:
+# 	user_movement_tb
+# End time: 15:56:51 on Jun 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 15:56:53 on Jun 05,2026, Elapsed time: 0:22:45
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_movement_tb 
+# Start time: 15:56:53 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_movement_tb
+# Loading work.user_movement
+# ** Error: (vsim-8378) ./user_movement.sv(75): Port size (9) does not match connection size (10) for implicit .name connection port 'y_coord'. The port definition is at: ./user_movement.sv(24).
+#    Time: 0 ps  Iteration: 0  Instance: /user_movement_tb/dut File: ./user_movement.sv
+# Error loading design
+# Error: Error loading design
+#        Pausing macro execution
+# MACRO ./runlab_user_movement.do PAUSED at line 12
+do runlab_user_movement.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:58:20 on Jun 05,2026
+# vlog -reportprogress 300 ./user_movement.sv 
+# -- Compiling module user_movement
+# -- Compiling module user_movement_tb
+# 
+# Top level modules:
+# 	user_movement_tb
+# End time: 15:58:20 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_movement_tb 
+# Start time: 15:56:53 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_movement_tb
+# Loading work.user_movement
+# ** Error: Cannot open macro file: wave_user_mov.do
+# Error in macro ./runlab_user_movement.do line 17
+# Cannot open macro file: wave_user_mov.do
+#     while executing
+# "do wave_user_mov.do"
+add wave -position end  sim:/user_movement_tb/clk
+add wave -position end  sim:/user_movement_tb/enable
+add wave -position end  sim:/user_movement_tb/rst
+add wave -position end  sim:/user_movement_tb/up
+add wave -position end  sim:/user_movement_tb/y_coord
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_uswe_mov.do
+do runlab_user_movement.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:58:57 on Jun 05,2026
+# vlog -reportprogress 300 ./user_movement.sv 
+# -- Compiling module user_movement
+# -- Compiling module user_movement_tb
+# 
+# Top level modules:
+# 	user_movement_tb
+# End time: 15:58:58 on Jun 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 15:59:00 on Jun 05,2026, Elapsed time: 0:02:07
+# Errors: 4, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_movement_tb 
+# Start time: 15:59:00 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_movement_tb
+# Loading work.user_movement
+# ** Error: Cannot open macro file: wave_user_mov.do
+# Error in macro ./runlab_user_movement.do line 17
+# Cannot open macro file: wave_user_mov.do
+#     while executing
+# "do wave_user_mov.do"
+add wave -position end  sim:/user_movement_tb/clk
+add wave -position end  sim:/user_movement_tb/enable
+add wave -position end  sim:/user_movement_tb/rst
+add wave -position end  sim:/user_movement_tb/up
+add wave -position end  sim:/user_movement_tb/y_coord
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_user_mov.do
+do runlab_user_movement.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 15:59:47 on Jun 05,2026
+# vlog -reportprogress 300 ./user_movement.sv 
+# -- Compiling module user_movement
+# -- Compiling module user_movement_tb
+# 
+# Top level modules:
+# 	user_movement_tb
+# End time: 15:59:47 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:59:49 on Jun 05,2026, Elapsed time: 0:00:49
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_movement_tb 
+# Start time: 15:59:49 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_movement_tb
+# Loading work.user_movement
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./user_movement.sv(95)
+#    Time: 1810 ns  Iteration: 1  Instance: /user_movement_tb
+# Break in Module user_movement_tb at ./user_movement.sv line 95
+add wave -position end  sim:/user_movement_tb/dut/vy_d
+add wave -position end  sim:/user_movement_tb/dut/vy_q
+add wave -position end  sim:/user_movement_tb/dut/y_d
+add wave -position end  sim:/user_movement_tb/dut/y_q
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_user_mov.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_user_mov.do
+do runlab_user_movement.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:12:24 on Jun 05,2026
+# vlog -reportprogress 300 ./user_movement.sv 
+# -- Compiling module user_movement
+# -- Compiling module user_movement_tb
+# 
+# Top level modules:
+# 	user_movement_tb
+# End time: 16:12:25 on Jun 05,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 16:12:28 on Jun 05,2026, Elapsed time: 0:12:39
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_movement_tb 
+# Start time: 16:12:28 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_movement_tb
+# Loading work.user_movement
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./user_movement.sv(95)
+#    Time: 1810 ps  Iteration: 1  Instance: /user_movement_tb
+# Break in Module user_movement_tb at ./user_movement.sv line 95
+do runlab_user_movement.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:20:27 on Jun 05,2026
+# vlog -reportprogress 300 ./user_movement.sv 
+# -- Compiling module user_movement
+# -- Compiling module user_movement_tb
+# 
+# Top level modules:
+# 	user_movement_tb
+# End time: 16:20:27 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:20:40 on Jun 05,2026, Elapsed time: 0:08:12
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_movement_tb 
+# Start time: 16:20:40 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_movement_tb
+# Loading work.user_movement
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./user_movement.sv(94)
+#    Time: 1390 ps  Iteration: 1  Instance: /user_movement_tb
+# Break in Module user_movement_tb at ./user_movement.sv line 94
+do runlab_user_movement.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:22:05 on Jun 05,2026
+# vlog -reportprogress 300 ./user_movement.sv 
+# -- Compiling module user_movement
+# -- Compiling module user_movement_tb
+# 
+# Top level modules:
+# 	user_movement_tb
+# End time: 16:22:05 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:22:12 on Jun 05,2026, Elapsed time: 0:01:32
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_movement_tb 
+# Start time: 16:22:12 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_movement_tb
+# Loading work.user_movement
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./user_movement.sv(94)
+#    Time: 1390 ps  Iteration: 1  Instance: /user_movement_tb
+# Break in Module user_movement_tb at ./user_movement.sv line 94
+do runlab_user_state_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:32:15 on Jun 05,2026
+# vlog -reportprogress 300 ./user_state_controller.sv 
+# -- Compiling module user_state_controller
+# -- Compiling module user_state_controller_tb
+# 
+# Top level modules:
+# 	user_state_controller_tb
+# End time: 16:32:15 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:32:38 on Jun 05,2026, Elapsed time: 0:10:26
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_state_controller_tb 
+# Start time: 16:32:38 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_state_controller_tb
+# Loading work.user_state_controller
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./user_state_controller.sv(82)
+#    Time: 190 ps  Iteration: 1  Instance: /user_state_controller_tb
+# Break in Module user_state_controller_tb at ./user_state_controller.sv line 82
+do runlab_screen_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:57:13 on Jun 05,2026
+# vlog -reportprogress 300 ./screen_controller.sv 
+# -- Compiling module screen_controller
+# -- Compiling module screen_controller_tb
+# 
+# Top level modules:
+# 	screen_controller_tb
+# End time: 16:57:13 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:57:16 on Jun 05,2026, Elapsed time: 0:24:38
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work screen_controller_tb 
+# Start time: 16:57:16 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.screen_controller_tb
+# Loading work.screen_controller
+# ** Error: Cannot open macro file: wave_screen_con.do
+# Error in macro ./runlab_screen_controller.do line 17
+# Cannot open macro file: wave_screen_con.do
+#     while executing
+# "do wave_screen_con.do"
+add wave -position end  sim:/screen_controller_tb/clk
+add wave -position end  sim:/screen_controller_tb/dead
+add wave -position 1  sim:/screen_controller_tb/rst
+add wave -position end  sim:/screen_controller_tb/start
+add wave -position end  sim:/screen_controller_tb/screen_select
+# Error opening Z:/371/rhythm_rush/verilog_src/std/std.sv
+# Path name 'Z:/371/rhythm_rush/verilog_src/std/std.sv' doesn't exist.
+add wave -position end  sim:/screen_controller_tb/dut/ns
+add wave -position 5  sim:/screen_controller_tb/dut/ps
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_screen_con.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_screen_con.do
+do runlab_user_state_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:58:13 on Jun 05,2026
+# vlog -reportprogress 300 ./user_state_controller.sv 
+# -- Compiling module user_state_controller
+# -- Compiling module user_state_controller_tb
+# 
+# Top level modules:
+# 	user_state_controller_tb
+# End time: 16:58:13 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:58:16 on Jun 05,2026, Elapsed time: 0:01:00
+# Errors: 4, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work user_state_controller_tb 
+# Start time: 16:58:16 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.user_state_controller_tb
+# Loading work.user_state_controller
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./user_state_controller.sv(82)
+#    Time: 190 ps  Iteration: 1  Instance: /user_state_controller_tb
+# Break in Module user_state_controller_tb at ./user_state_controller.sv line 82
+do runlab_screen_controller.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 16:58:29 on Jun 05,2026
+# vlog -reportprogress 300 ./screen_controller.sv 
+# -- Compiling module screen_controller
+# -- Compiling module screen_controller_tb
+# 
+# Top level modules:
+# 	screen_controller_tb
+# End time: 16:58:29 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:58:32 on Jun 05,2026, Elapsed time: 0:00:16
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work screen_controller_tb 
+# Start time: 16:58:32 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.screen_controller_tb
+# Loading work.screen_controller
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./screen_controller.sv(75)
+#    Time: 130 ps  Iteration: 1  Instance: /screen_controller_tb
+# Break in Module screen_controller_tb at ./screen_controller.sv line 75
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:11:07 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:11:07 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:11:17 on Jun 05,2026, Elapsed time: 0:12:45
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:11:17 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# ** Error: Cannot open macro file: wave_obj_man.do
+# Error in macro ./runlab_obj_man.do line 17
+# Cannot open macro file: wave_obj_man.do
+#     while executing
+# "do wave_obj_man.do"
+add wave -position end  sim:/object_manager_tb/clk
+add wave -position end  sim:/object_manager_tb/enable
+add wave -position end  sim:/object_manager_tb/left_ptr
+add wave -position end  sim:/object_manager_tb/right_ptr
+add wave -position end  sim:/object_manager_tb/new_pow_height
+add wave -position end  sim:/object_manager_tb/obs_spawn
+add wave -position end  sim:/object_manager_tb/obstacles
+add wave -position end  sim:/object_manager_tb/pow_spawn
+add wave -position end  sim:/object_manager_tb/power_ups
+add wave -position end  sim:/object_manager_tb/right_ptr
+add wave -position end  sim:/object_manager_tb/rst
+add wave -position end  sim:/object_manager_tb/shift_count
+add wave -position 7  sim:/object_manager_tb/new_obs_height
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_obj_man.do
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:12:22 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:12:22 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:12:26 on Jun 05,2026, Elapsed time: 0:01:09
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:12:26 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(107)
+#    Time: 13870 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 107
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_obj_man.do
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_obj_man.do
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:16:28 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:16:28 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:16:39 on Jun 05,2026, Elapsed time: 0:04:13
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:16:39 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(107)
+#    Time: 13870 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 107
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_obj_man.do
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:24:31 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:24:31 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:24:40 on Jun 05,2026, Elapsed time: 0:08:01
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:24:40 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(108)
+#    Time: 24110 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 108
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:25:13 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:25:13 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:25:21 on Jun 05,2026, Elapsed time: 0:00:41
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:25:21 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(108)
+#    Time: 12790 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 108
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:26:17 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:26:17 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:26:27 on Jun 05,2026, Elapsed time: 0:01:06
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:26:27 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(107)
+#    Time: 13870 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 107
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:28:02 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:28:02 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:28:12 on Jun 05,2026, Elapsed time: 0:01:45
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:28:12 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(107)
+#    Time: 13870 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 107
+# WARNING: No extended dataflow license exists
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:31:56 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:31:56 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:32:01 on Jun 05,2026, Elapsed time: 0:03:49
+# Errors: 0, Warnings: 1
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:32:01 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(107)
+#    Time: 13870 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 107
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:33:42 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:33:42 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:33:51 on Jun 05,2026, Elapsed time: 0:01:50
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:33:51 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(107)
+#    Time: 14270 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 107
+do runlab_obj_man.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:35:39 on Jun 05,2026
+# vlog -reportprogress 300 ./object_manager.sv 
+# -- Compiling module object_manager
+# -- Compiling module object_manager_tb
+# 
+# Top level modules:
+# 	object_manager_tb
+# End time: 17:35:39 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:35:48 on Jun 05,2026, Elapsed time: 0:01:57
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work object_manager_tb 
+# Start time: 17:35:48 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.object_manager_tb
+# Loading work.object_manager
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./object_manager.sv(107)
+#    Time: 25470 ps  Iteration: 1  Instance: /object_manager_tb
+# Break in Module object_manager_tb at ./object_manager.sv line 107
+do runlab_collision.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 17:59:22 on Jun 05,2026
+# vlog -reportprogress 300 ./collision.sv 
+# -- Compiling module collision
+# -- Compiling module collision_tb
+# 
+# Top level modules:
+# 	collision_tb
+# End time: 17:59:22 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 17:59:31 on Jun 05,2026, Elapsed time: 0:23:43
+# Errors: 0, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work collision_tb 
+# Start time: 17:59:33 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.collision_tb
+# Loading work.collision
+# ** Error: Cannot open macro file: wave_col.do
+# Error in macro ./runlab_collision.do line 17
+# Cannot open macro file: wave_col.do
+#     while executing
+# "do wave_col.do"
+add wave -position end  sim:/collision_tb/crash_detected
+add wave -position end  sim:/collision_tb/power_up_detected
+add wave -position end  sim:/collision_tb/left_ptr
+add wave -position end  sim:/collision_tb/shift_count
+add wave -position end  sim:/collision_tb/y_coord
+add wave -position end  sim:/collision_tb/power_ups
+add wave -position end  sim:/collision_tb/obstacles
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf Z:/371/rhythm_rush/wave_col.do
+do runlab_collision.do
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+# Start time: 18:00:17 on Jun 05,2026
+# vlog -reportprogress 300 ./collision.sv 
+# -- Compiling module collision
+# -- Compiling module collision_tb
+# 
+# Top level modules:
+# 	collision_tb
+# End time: 18:00:17 on Jun 05,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 18:00:22 on Jun 05,2026, Elapsed time: 0:00:49
+# Errors: 3, Warnings: 0
+# vsim -voptargs=""+acc"" -t 1ps -lib work collision_tb 
+# Start time: 18:00:22 on Jun 05,2026
+# Loading sv_std.std
+# Loading work.collision_tb
+# Loading work.collision
+# .main_pane.wave.interior.cs.body.pw.wf
+# .main_pane.structure.interior.cs.body.struct
+# .main_pane.objects.interior.cs.body.tree
+# ** Note: $stop    : ./collision.sv(172)
+#    Time: 90 ps  Iteration: 0  Instance: /collision_tb
+# Break in Module collision_tb at ./collision.sv line 172

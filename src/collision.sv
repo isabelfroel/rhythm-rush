@@ -103,15 +103,73 @@ endmodule // collision
 
 /* tests collisions 
 */
-// module collision_tb;
-//     logic [9:0] y_coord;
-//     logic [5:0] obj_height;
-//     logic crash;
+`timescale 1 ps / 1 ps
+module collision_tb ();
 
-//     collision dut (.*);
+	logic [8:0] y_coord;
+	logic [3:0] shift_count;
+	logic [5:0] left_ptr;
+	logic [63:0][5:0] obstacles, power_ups;
+	logic crash_detected, power_up_detected;
+	
+	// instantiate module
+	collision dut (.*);
+	
+	parameter T = 10;
+	
+	// simulated inputs
+	initial begin
+		y_coord <= 0; shift_count <= 0; left_ptr <= 0; obstacles <= '0; power_ups <= '0; #T; 
+        // no collision, no power-up
+		y_coord <= 9'd200; shift_count <= 4'd0; left_ptr <= 6'd0; obstacles <= '0; power_ups <= '0; #T;
 
-//     initial begin
-//         $stop;
-//     end
+		// left chunk obstacle collision, screen_col_left = 8 when shift_count = 0
+		obstacles[8] <= 6'd20;   // obstacle top at 300-20 = 280
+		y_coord <= 9'd260;       // player_bottom = 289, should overlap
+		#T;
+        obstacles <= '0;
 
-// endmodule
+		// middle chunk obstacle collision, screen_col_mid = 9 when shift_count = 0
+		obstacles[9] <= 6'd25;   // obstacle top at 275
+		y_coord <= 9'd250;       // player_bottom = 279
+		#T;
+		obstacles <= '0;
+
+		// right chunk obstacle collision, screen_col_right = 10 when shift_count = 0
+		obstacles[10] <= 6'd30;  // obstacle top at 270
+		y_coord <= 9'd245;       // player_bottom = 274
+		#T;
+		obstacles <= '0;
+
+		// left chunk power-up pickup, power-up spans p_y to p_y+9
+		power_ups[8] <= 6'd20;   // power-up at y = 100+20 = 120
+		y_coord <= 9'd115;       // player spans 115..144
+		#T;
+		power_ups <= '0;
+
+		// middle chunk power-up pickup
+		power_ups[9] <= 6'd35;   // power-up at y = 135
+		y_coord <= 9'd130;       // player spans 130..159
+		#T;
+		power_ups <= '0;
+
+		// right chunk power-up pickup
+		power_ups[10] <= 6'd50;  // power-up at y = 150
+		y_coord <= 9'd145;       // player spans 145..174
+		#T;
+		power_ups <= '0;
+
+
+		// shifted case: changes which chunks are checked
+		shift_count <= 4'd9;
+		left_ptr <= 6'd0;
+		obstacles[8] <= 6'd0;
+		obstacles[9] <= 6'd24;
+		obstacles[11] <= 6'd24;
+		y_coord <= 9'd248;
+		#T;
+		obstacles <= '0;
+		$stop();
+	end  // inputs initial
+	
+endmodule  // collision_tb
