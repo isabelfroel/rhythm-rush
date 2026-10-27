@@ -6,13 +6,13 @@ A side-scrolling jump-and-dodge game written in SystemVerilog and rendered over 
 
 ## Top-Level Block Diagram
 
-![Top-level block diagram](images/top_level_block_diagram.png)
+![Top-level block diagram](images/top_level_block_diagram.jpg)
 
 This is my top level block diagram for my side scrolling game. It takes Clock_50, key 0 (jump), key 3 (start), switches 8-0 (difficulty selection), and switch 9 (reset) as inputs. It renders the game on the VGA display and outputs your score on hex displays 0 and 1. The majority of the game logic is in the game_screen_manager module. This top level first processes user input by synchronizing it to avoid metastability and edge detecting button presses. It uses the screen_controller FSM to select which screen to display. The screen_controller takes in start and dead and decides if it should route the start screen, game screen, or end screen to the video_driver. The screen_controller also has a game in progress signal to pause object spawning and movement. TLDR: Top level processes user input and muxes between different screens based on screen_controller.
 
 ## Screen_Controller ASMD
 
-![Screen controller ASMD](images/screen_asmd.png)
+![Screen controller ASMD](images/screen_asmd.jpg)
 
 This is my ASMD for the screen_controller in the top level module. Based on start (an external input) and dead (an intermediate signal when a player collides with an obstacle) it moves through the game states. Based on the game state, a particular screen_manager's r,g,b values are routed to the video_driver for a given x,y pixel. The start screen and end screen are stored in ROM but the game screen is more complex, using multiple smaller modules to figure out what should be rendered. TLDR: Decides which screen the top level should display.
 
@@ -24,7 +24,7 @@ This is where the meat of the game logic takes place. It takes clock, player jum
 
 ## User_State_Controller ASM
 
-![User state controller ASM](images/user_state_asm.png)
+![User state controller ASM](images/power_up_asmd.jpg)
 
 This is my user_state ASM. The player starts as alive, when it crashes, it dies. However, if the player picks up a power up, it becomes immune until the next time it crashes. Immune is outputted to change the player's color. Dead is outputted to end the game and display the game over screen.
 
@@ -34,13 +34,13 @@ This is my user_state ASM. The player starts as alive, when it crashes, it dies.
 
 ## ModelSim for Screen Controller
 
-![ModelSim screen controller](images/modelsim_screen_controller.png)
+![ModelSim screen controller](images/screen_controller_sim.png)
 
 This tests every transition for the screen controller. It correctly resets to the Start screen and moves to Game after start is hit. It remains in the Game state until the dead signal is received and it transitions to the End screen.
 
 ## ModelSim for User State Controller
 
-![ModelSim user state controller](images/modelsim_user_state.png)
+![ModelSim user state controller](images/user_state_sim.png)
 
 This tests every transition for the user state controller. It correctly resets to the Alive state. It moves to Immune when a power up is gained and outputs the immune signal. When a crash is detected, it moves back to the Alive state. When a crash is detected in the Alive state it moves to the Dead state and outputs dead.
 
