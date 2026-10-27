@@ -62,19 +62,19 @@ If you press up while the user is already jumping, it does not affect the user's
 
 ## ModelSim for Object Manager
 
-![ModelSim object manager 1](images/modelsim_object_manager_1.png)
+![ModelSim object manager 1](images/obj_man_sim.png)
 
 My object manager is a circular buffer. It handles updating left and right pointers and writing new objects to the busses. You can see the pointers initialize to 0 and 63. The fine grained shift count goes to 9 before the pointers increment. I start by writing an object of height 12 to the obstacle bus. You can see it gets added to the right pointer's slot, 0. It only gets written because obs_spawn is high.
 
-![ModelSim object manager 2](images/modelsim_object_manager_2.png)
+![ModelSim object manager 2](images/obj_man_sim_2.png)
 
 This shows writing 9 and 5 to the power_ups bus when pow_spawn is high and 20 to obstacles when obs_spawn is high.
 
-![ModelSim object manager 3](images/modelsim_object_manager_3.png)
+![ModelSim object manager 3](images/obj_man_sim_3.png)
 
 When pow_spawn and obs_spawn are low, 31 does not get written to the buses.
 
-![ModelSim object manager 4](images/modelsim_object_manager_4.png)
+![ModelSim object manager 4](images/obj_man_sim_4.png)
 
 When the queue wraps back around, if obs_spawn or pow_spawn is low, the slot is filled with zero instead of the old height persisting. This ensures that the game field isn't too repetitive and doesn't get cluttered with too many objects.
 
@@ -84,23 +84,23 @@ When the queue wraps back around, if obs_spawn or pow_spawn is low, the slot is 
 
 Displaying the start screen from memory.
 
-![Start screen](images/vga_start.png)
+![Start screen](images/start_screen_screenshot.png)
 
 Game view
 
-![Game view](images/vga_game.png)
+![Game view](images/screenshot.png)
 
 Player jumping
 
-![Player jumping](images/vga_jump.png)
+![Player jumping](images/jumping_screenshot.png)
 
 Player colliding with a power up and turning purple.
 
-![Power up collision](images/vga_powerup.png)
+![Power up collision](images/power_up_screenshot.png)
 
 Game over screen from ROM.
 
-![Game over screen](images/vga_game_over.png)
+![Game over screen](images/death_screen.png)
 
 ---
 
@@ -110,50 +110,21 @@ I spent the most time trying to figure out how to rotate objects around the scre
 
 ### Mock Game Screen Render
 
-![Mock game screen render](images/mock_game_screen.png)
+![Mock game screen render](images/game_screen_layout.jpg)
 
 This is what the game screen looks like. The user is on the left as a ball. It jumps up and falls in accordance with physics. Objects scroll in from the right. The screen is 640 pixels divided into chunks of size 10. So I am tracking 64 obstacles or power up locations. Obstacles always have width 10 but handle heights (height = 0 when there is no object). Power ups are always size 10 by 10, but are at a random displacement from the ceiling.
 
 ### Object Manager Overview
 
-![Object manager overview](images/object_manager_overview.png)
+![Object manager bus](images/array_diagram.png)
 
 My object manager handles the rotation of objects. Objects are stored in 64 x 6 multidimensional buses. There are 64 slots and they have heights of up to 2^6. New objects are written to the right pointer's location and the pointers are used to know where on the screen objects should be placed. I just need to store heights and update pointers.
+![Object manager shifting](images/shift_counter.png)
 
 Since each object has a width of 10, I also need a fine grained shift to rotate the objects 1 pixel at a time before the left/right pointers are updated.
 
 ### Collision Overview
+![Collision Boundary Boxes](images/user_postition.jpg)
 
 My collision detection is more complicated than I expected and was actually the source of a few bugs. The player can spawn at most 3 different objects depending on left and right pointers and shift count. Although the character is rendered as a circle, it is treated as being in a square boundary box. Originally I had errors because I was only checking the left and right edge and thought that the player only overlapped with two objects at a time.
 
----
-
-## Flow Summary from Compilation Report
-
-![Flow summary](images/flow_summary.png)
-
----
-
-## Experience Report
-
-**Give any positive or negative feedback you have on the lab. What was your implementation experience like?**
-
-So much fun! I really enjoyed having a more open ended project to show off what I learned in the class.
-
-**Describe any significant issues you encountered while completing the lab and how you overcame them (or "I did not encounter any significant issues in this lab").**
-
-I did not encounter any significant issues in this lab.
-
-**Include any tips and/or tricks that you discovered while completing the lab – these tips may prove useful to you in future labs!**
-
-None.
-
-**Your lab report should end with your estimated total time (in hours) to complete the lab. This includes reading, planning, design, coding, debugging, testing, etc.**
-
-60+ hrs.
-
----
-
-## Video Link
-
-[https://drive.google.com/file/d/18Wh37iLt6umY-Fe4sftWXFF38GNu7u4O/view?usp=sharing](https://drive.google.com/file/d/18Wh37iLt6umY-Fe4sftWXFF38GNu7u4O/view?usp=sharing)
