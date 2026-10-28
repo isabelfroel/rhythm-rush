@@ -126,5 +126,5 @@ Since each object has a width of 10, I also need a fine grained shift to rotate 
 ### Collision Overview
 ![Collision Boundary Boxes](images/user_postition.jpg)
 
-My collision detection is more complicated than I expected and was actually the source of a few bugs. The player can spawn at most 3 different objects depending on left and right pointers and shift count. Although the character is rendered as a circle, it is treated as being in a square boundary box. Originally I had errors because I was only checking the left and right edge and thought that the player only overlapped with two objects at a time.
+My collision detection is more complicated than I expected and was actually the source of a few bugs. The player can span at most 3 different objects depending on left and right pointers and shift count. Although the character is rendered as a circle, it is treated as being in a square boundary box. Originally I had errors because I was only checking the left and right edge and thought that the player only overlapped with two objects at a time.
 
